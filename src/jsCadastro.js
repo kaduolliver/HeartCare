@@ -1,4 +1,4 @@
-// Configura√ß√£o do Firebase
+// ConfiguraÁ„o do Firebase (mantenha suas credenciais)
 const firebaseConfig = {
   apiKey: "AIzaSyClTmZ5aIE16Xp2L7CE3tN5igyG0GDwj60",
   authDomain: "cadastrousuario-95afb.firebaseapp.com",
@@ -9,63 +9,59 @@ const firebaseConfig = {
   measurementId: "G-90JYEGTHLS"
 };
 
-// Inicializa o Firebase
+// InicializaÁ„o do Firebase
 const app = firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth(); // Adicione isso para autenticaÁ„o
 const db = firebase.firestore(app);
-// Adiciona um listener para o formul√°rio de cadastro
-document.getElementById('cadastroUsuario').addEventListener('submit', function(event) {
+
+// Listener do Formul·rio (com validaÁ„o de senha)
+document.getElementById('cadastroUsuario').addEventListener('submit', async (event) => {
   event.preventDefault();
 
-  // Obtendo os valores do formul√°rio
-  const nome = document.getElementById('NomeCompleto').value;
-  const cpf = document.getElementById('CPF').value;
+  // Obter valores
+  const nome = document.getElementById('NomeCompleto').value.trim();
+  const cpf = document.getElementById('CPF').value.replace(/\D/g, ''); // Remove n„o-n˙meros
   const dataNascimento = document.getElementById('DataNascimento').value;
-  const email = document.getElementById('Email').value;
+  const email = document.getElementById('Email').value.trim();
   const senha = document.getElementById('Senha').value;
-  const telefone = document.getElementById('Telefone').value;
+  const confirmarSenha = document.getElementById('ConfirmarSenha').value;
+  const telefone = document.getElementById('Telefone').value.replace(/\D/g, '');
 
-  console.log(nome, cpf, dataNascimento, email, senha, telefone);
-  cadastrarUsuario(nome, cpf, dataNascimento, email, senha, telefone);
+  // ValidaÁıes
+  if (senha !== confirmarSenha) {
+    alert('As senhas n„o coincidem!');
+    return;
+  }
+
+  if (!validarCPF(cpf)) {
+    alert('CPF inv·lido!');
+    return;
+  }
+
+  try {
+    // Cria usu·rio no Authentication
+    const userCredential = await auth.createUserWithEmailAndPassword(email, senha);
+    
+    // Salva dados adicionais no Firestore
+    await db.collection('usuarios').doc(userCredential.user.uid).set({
+      nome,
+      cpf,
+      dataNascimento,
+      telefone,
+      dataCadastro: new Date()
+    });
+
+    alert('Cadastro realizado com sucesso!');
+    document.getElementById('cadastroUsuario').reset();
+    
+  } catch (error) {
+    console.error('Erro no cadastro:', error);
+    alert(`Erro: ${error.message}`);
+  }
 });
 
-function cadastrarUsuario(nome, cpf, dataNascimento, email, senha, telefone) {
-  // Fun√ß√£o para cadastrar um usu√°rio no Firestore
-  db.collection('cadastro').add({
-      NomeCompleto: nome,
-      CPF: cpf,
-      DataNascimento: dataNascimento,
-      Email: email,
-      Senha: senha,
-      Telefone: telefone
-  })
-  .then(() => {
-      alert('Usu√°rio cadastrado com sucesso!');
-      document.getElementById('cadastroUsuario').reset(); // Limpa o formul√°rio
-      listarUsuarios(); // Atualiza a lista de usu√°rios ap√≥s o cadastro
-  })
-  .catch((error) => {
-      console.error('Erro ao cadastrar usu√°rio: ', error);
-      alert('Erro ao cadastrar usu√°rio. Tente novamente.');
-  });
+// FunÁ„o para Validar CPF (adicione no cÛdigo)
+function validarCPF(cpf) {
+  // Implemente sua lÛgica de validaÁ„o de CPF aqui
+  return cpf.length === 11; // Exemplo simplificado
 }
-
-function listarUsuarios() {
-  const listaUsuarios = document.getElementById('listaUsuarios');
-  listaUsuarios.innerHTML = ''; // Limpa a lista antes de atualizar
-
-  db.collection('cadastro').get()
-  .then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-          const usuario = doc.data(); // Dados do documento
-          const itemLista = document.createElement('li'); // Cria um item de lista
-          itemLista.textContent = `Nome: ${usuario.NomeCompleto}, CPF: ${usuario.CPF}, E-mail: ${usuario.Email}, Telefone: ${usuario.Telefone}`;
-          listaUsuarios.appendChild(itemLista); // Adiciona o item √† lista
-      });
-  })
-  .catch((error) => {
-      console.error('Erro ao buscar usu√°rios: ', error);
-  });
-}
-
-// Carrega a lista de usu√°rios ao carregar a p√°gina
-window.onload = listarUsuarios;

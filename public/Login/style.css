@@ -1,18 +1,201 @@
 body {
-    height: 90vh; 
+    flex-direction: column;
+    position: relative;
+    min-height: 100vh;
+    padding-bottom: 150px;
     margin: 0;
-    background: linear-gradient(to left, rgb(207, 213, 247), rgba(255, 255, 255, 0)), url('https://cdn.folhape.com.br/upload/dn_arquivo/2020/01/medico1.jpg');
-    background-size: cover;
+    background-image: url(./img/doctors-background-.png);
+    background-attachment: fixed;/* Deixa a imagem fixa durante a rolagem */
+    background-size: cover;/* Faz a imagem cobrir toda a área */
     background-position: center;
-    background-attachment: fixed;
+    height: 100vh;
+}
+
+/* * {
+    outline: 1px solid rgba(255, 0, 0, 0.3) !important;
+} */
+
+.content {
+    flex: 1;/* Faz o conteúdo principal ocupar o espaço entre o topo e a navegação */
+    position: relative; /* Permite posicionamento absoluto dentro desta div */
+}
+
+.top-bar {
+    position: relative;
+    top: 0;
+    width: 100%;
+    background: rgba(30, 30, 63, 0.4);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+    overflow: hidden;
+    color: white;
+    padding: 15px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    transition: top 0.3s ease-in-out;/* Transição suave ao esconder/exibir */
+}
+
+#navbarNav {
+    position: relative;
+    left: 700px;
+}
+
+.navbar-nav {
+    position: relative;
+    display: flex;
+    gap: 25px;
+}
+
+.navbar-brand {
+    position: relative;
+    left: 20px;
+}
+
+.nav-link {
+    color: white;
+    position: relative;
+    top: 10px;
+}
+
+.button-card {
+    border: none;
+    margin-top: 15px;
+    font-weight: bold;
+    color: white;
+    background-color: rgba(49, 113, 145, 0.9);
+}
+
+.button-card:hover {
+    background: linear-gradient(135deg, rgb(30, 30, 63), #47acaf);
+    color: white;
+    transform: scale(1.02);
 }
 
 .form-container {
     border-radius: 15px;
     padding: 40px;
-    background-color: rgba(182, 204, 214, 0.9); 
+    background-color: rgba(30, 30, 63, 0.9);
+    color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     max-width: 500px; /* Largura mÃ¡xima do formulÃ¡rio */
     margin: 90px 0 90px auto; /* Margem superior e inferior de 90px, alinhado Ã  direita */
     margin-right: 10%; /* Ajuste conforme necessÃ¡rio para afastar da borda direita */
+}
+
+.form-control {
+    transition: all 0.3s ease;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    padding: 7px;
+  }
+  
+  .form-control:hover {
+    border-color: #a0a0a0;
+  }
+  
+  .form-control:focus {
+    outline: none;
+    border-color: #1e1e3f;
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.25);
+  }
+
+.bottom-bar {
+    width: 100%;
+    height: 150px;
+    bottom: 0;
+    left: 0;
+    margin-top: auto;
+    background-color: rgba(30, 30, 63, 0.9);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+    overflow: hidden;
+    color: white;
+    padding: 15px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.left-content {
+    justify-content: space-between;
+    display: flex;
+}
+
+.center-content {
+    position: relative;
+    right: 100px;
+    top: 10px;
+}
+
+.right-content {
+    justify-content: space-between;
+    display: flex;
+    margin-top: 25px;
+}
+
+.menu {
+    position: relative;
+    right: 100px;
+    top: 20px;
+}
+
+.terms {
+    position: relative;
+    bottom: 70px;
+    left: 100px;
+}
+
+.follow-me {
+    font-size: 15px;
+    position: relative;
+    bottom: 30px;
+    right: 55px;
+}
+
+.instagram-icon img {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    right: 150px;
+}
+
+.instagram-icon img:hover {
+    transform: scale(1.1);
+}
+
+.x-icon img {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    right: 130px;
+}
+
+.x-icon img:hover {
+    transform: scale(1.1);
+}
+
+.title-of-rights {
+    position: relative;
+    font-size: 12px;
+    margin-top: 20px;
+    left: 10px;
+    top: 10px;
+}
+
+.button-1 {
+    background: linear-gradient(135deg, #1e1e3f, #2a2a5a);
+    border: none;
+    margin-top: 15px;
+    color: white;
+}
+
+.button-1:hover {
+    background: linear-gradient(135deg, #1e1e3f, #2a2a5a);
+    transform: scale(1.02);
 }

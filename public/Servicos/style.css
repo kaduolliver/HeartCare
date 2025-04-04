@@ -5,7 +5,7 @@ body {
     min-height: 100vh;
     padding-bottom: 150px;
     margin: 0;
-    background-image: url(./img/heart.jpg);
+    background-image: url(./img/medical-structure-background.jpg);
     background-attachment: fixed;/* Deixa a imagem fixa durante a rolagem */
     background-size: cover;/* Faz a imagem cobrir toda a área */
     background-position: center;
@@ -24,7 +24,7 @@ body {
     position: relative;
     top: 0;
     width: 100%;
-    background: transparent;
+    background: rgba(30, 30, 63, 0.4);
     backdrop-filter: blur(10px);
     box-shadow: 0 0 30px rgba(0, 0, 0, .5);
     overflow: hidden;
@@ -34,8 +34,7 @@ body {
     justify-content: space-between;
     align-items: center;
     z-index: 1000;
-    transition: top 0.3s ease-in-out;
-    /* Transição suave ao esconder/exibir */
+    transition: top 0.3s ease-in-out;/* Transição suave ao esconder/exibir */
 }
 
 #navbarNav {
@@ -73,7 +72,7 @@ body {
 
 .title {
     font-family: 'Roboto Slab';
-    font-size: 2.5rem;
+    font-size: 3rem;
     text-align: center;
     margin: 2rem;
     color: white;
@@ -82,6 +81,8 @@ body {
 
 .title-bar {
     background-color: rgba(49, 113, 145, 0.9);
+    width: 100%;
+    height: auto;
 }
 
 .cards {
@@ -94,7 +95,7 @@ body {
     justify-content: center;
 }
 
-.card-1 {
+.card-edit {
     position: relative;
     text-align: center;
     border-radius: 10%;
@@ -106,7 +107,7 @@ body {
     border: none;
 }
 
-.card-1:hover {
+.card-edit:hover {
     transform: translateY(-10px); /* Animação simples ao passar o mouse */
    
 }
@@ -123,38 +124,6 @@ body {
 .modal-footer {
     background: linear-gradient(135deg, #1e1e3f, #2a2a5a);
     color: white;
-}
-
-.card-2 {
-    position: relative;
-    text-align: center;
-    border-radius: 10%;
-    transition: transform 0.3s;
-    background: linear-gradient(135deg, #1e1e3f, #2a2a5a);
-    border-radius: 15px;
-    overflow: hidden;
-    transition: transform 0.3s, box-shadow 0.3s;
-    border: none;
-}
-
-.card-2:hover {
-    transform: translateY(-10px);
-}
-
-.card-3 {
-    position: relative;
-    text-align: center;
-    border-radius: 10%;
-    transition: transform 0.3s;
-    background: linear-gradient(135deg, #1e1e3f, #2a2a5a);
-    border-radius: 15px;
-    overflow: hidden;
-    transition: transform 0.3s, box-shadow 0.3s;
-    border: none;
-}
-
-.card-3:hover {
-    transform: translateY(-10px);
 }
 
 .card-body {
@@ -178,8 +147,7 @@ body {
     bottom: 0;
     left: 0;
     margin-top: auto;
-    position: relative;
-    background-color: rgba(49, 113, 145, 0.9);
+    background-color: rgba(30, 30, 63, 0.9);
     box-shadow: 0 0 30px rgba(0, 0, 0, .5);
     overflow: hidden;
     color: white;
@@ -261,14 +229,14 @@ body {
 }
 
 .button-1 {
-    background: linear-gradient(135deg, #1e1e3f, #2a2a5a);
+    background-color: rgba(49, 113, 145, 0.9);
     border: none;
     margin-top: 15px;
     color: white;
 }
 
 .button-1:hover {
-    background: linear-gradient(135deg, #1e1e3f, #2a2a5a);
+    background: linear-gradient(135deg, #1e1e3f, #47acaf);
     transform: scale(1.02);
 }
 
