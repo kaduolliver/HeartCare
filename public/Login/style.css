@@ -1,0 +1,18 @@
+body {
+    height: 90vh; 
+    margin: 0;
+    background: linear-gradient(to left, rgb(207, 213, 247), rgba(255, 255, 255, 0)), url('https://cdn.folhape.com.br/upload/dn_arquivo/2020/01/medico1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.form-container {
+    border-radius: 15px;
+    padding: 40px;
+    background-color: rgba(182, 204, 214, 0.9); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 500px; /* Largura máxima do formulário */
+    margin: 90px 0 90px auto; /* Margem superior e inferior de 90px, alinhado à direita */
+    margin-right: 10%; /* Ajuste conforme necessário para afastar da borda direita */
+}
