@@ -18,10 +18,10 @@ document.getElementById('Telefone').addEventListener('input', function(e) {
         formattedValue = '(' + value.substring(0, 2);
     }
     if (value.length > 2) {
-        formattedValue += ')' + value.substring(2, 6);
+        formattedValue += ')' + value.substring(2, 7);
     }
     if (value.length > 6) {
-        formattedValue += '-' + value.substring(6, 10);
+        formattedValue += '-' + value.substring(7, 11);
     }
 
     e.target.value = formattedValue;
