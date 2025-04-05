@@ -12,9 +12,9 @@ body {
     height: 100vh;/* Faz o body ocupar toda a altura da janela */
 }
 
-/* {
-    outline: 1px solid rgba(255, 0, 0, 0.3) !important; /* Debug para delimitar elementos 
-} */
+/* * {
+    outline: 1px solid rgba(255, 0, 0, 0.3) !important; /* Debug para delimitar elementos */
+/* }  */
 
 .content {
     flex: 1;/* Faz o conteúdo principal ocupar o espaço entre o topo e a navegação */
@@ -49,6 +49,11 @@ body {
     gap: 25px;
 }
 
+.nav-item {
+    position: relative;
+    top: 10px;
+}
+
 .navbar-brand {
     position: relative;
     left: 20px;
@@ -57,7 +62,6 @@ body {
 .nav-link {
     color: white;
     position: relative;
-    top: 10px;
 }
 
 .btn {
@@ -211,12 +215,35 @@ body {
     position: relative;
     right: 100px;
     top: 20px;
+    color: #1e1e3f;
+}
+
+.menu-title {
+    position: relative;
+    left: 15px;
 }
 
 .terms {
     position: relative;
-    bottom: 70px;
+    bottom: 90px;
     left: 100px;
+}
+
+.location {
+    position: relative;
+    right: 150px;
+    bottom: 8px;
+}
+
+.address {
+    color: #1e1e3f;
+}
+
+.follow {
+    position: relative;
+    display: flex;
+    top: 40px;
+    right: 20px;
 }
 
 .follow-me {
@@ -224,6 +251,7 @@ body {
     position: relative;
     bottom: 30px;
     right: 55px;
+    color: #1e1e3f;
 }
 
 .instagram-icon img {

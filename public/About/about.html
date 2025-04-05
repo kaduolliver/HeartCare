@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HeartCare - Contato</title>
+    <title>HeartCare - Sobre nos</title>
     <link rel="icon" href="./icons/heart-care-pages-icon.png" type="image/heart-care">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -51,20 +51,79 @@
 
         <div class="middle-content">
 
-            <div class="form-container">
-                <h2>Entre em contato conosco</h2>
-                <br>
-                <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="exampleFormControlInput1"
-                        placeholder="nome@example.com">
+            <div class="row justify-content-center">
+                <div class="col-md-5 col-lg-3">
+                  <nav id="navbar-example3" class="h-100 flex-column align-items-stretch pe-4 border-end">
+                    <nav class="nav nav-pills flex-column sticky-top py-3" style="top: 20px;">
+                      <a class="nav-link rounded-pill mb-2 active" href="#item-1">
+                        <i class="bi bi-house-door me-2"></i>Quem Somos?
+                      </a>
+                      <nav class="nav nav-pills flex-column ps-3 border-start">
+                        <a class="nav-link rounded-pill my-1" href="#item-1-1">
+                          <i class="bi bi-chevron-right me-2"></i>Missao
+                        </a>
+                        <a class="nav-link rounded-pill my-1" href="#item-1-2">
+                          <i class="bi bi-chevron-right me-2"></i>Valores
+                        </a>
+                      </nav>
+                      <a class="nav-link rounded-pill mb-2" href="#item-2">
+                        <i class="bi bi-gear me-2"></i>Nossa Historia
+                      </a>
+                      <a class="nav-link rounded-pill mb-2" href="#item-3">
+                        <i class="bi bi-lightning me-2"></i>Nossos Objetivos
+                      </a>
+                      <nav class="nav nav-pills flex-column ps-3 border-start">
+                        <a class="nav-link rounded-pill my-1" href="#item-3-1">
+                          <i class="bi bi-chevron-right me-2"></i>Prevencao e Diagnostico Precoce
+                        </a>
+                        <a class="nav-link rounded-pill my-1" href="#item-3-2">
+                          <i class="bi bi-chevron-right me-2"></i>Tratamento Personalizado
+                        </a>
+                      </nav>
+                    </nav>
+                  </nav>
                 </div>
-                <div class="mb-3">
-                    <label for="exampleFormControlTextarea1" class="form-label">Qual sua duvida?</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+              
+                <div class="col-md-7 col-lg-6">
+                  <div data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-smooth-scroll="true" 
+                       class="scrollspy-example-2 p-4 rounded-3 shadow-sm" tabindex="0" style="background-color: #f8f9fa;">
+                    <div id="item-1" class="mb-1 pb-1 border-bottom">
+                      <h4 class="text-primary"><i class="bi bi-house-door me-2"></i>Quem Somos?</h4>
+                      <p class="lead">A <strong>HeartCare</strong> e uma clinica especializada em cardiologia, dedicada a oferecer atendimento humanizado e de excelencia para cuidar do seu coracao. Nossa equipe e formada por profissionais altamente qualificados, comprometidos com a saude cardiovascular de cada paciente.</p>
+                    </div>
+                    <div id="item-1-1" class="mb-1 pb-1 border-bottom">
+                      <h5 class="text-secondary"><i class="bi bi-chevron-right me-2"></i>Missao</h5>
+                      <p>Promover saude e qualidade de vida por meio de um atendimento cardiologico personalizado, com tecnologia avancada e equipe especializada.</p>
+                    </div>
+                    <div id="item-1-2" class="mb-1 pb-4 ">
+                      <h5 class="text-secondary"><i class="bi bi-chevron-right me-2"></i>Valores</h5>
+                      <ul class="list-group">
+                        <li class="list-group-item">Etica e transparencia em todos os procedimentos.</li>
+                        <li class="list-group-item">Compromisso com o bem-estar do paciente.</li>
+                        <li class="list-group-item">Inovacao constante em tratamentos e diagnosticos.
+                        </li>
+                      </ul>
+                    </div>
+                    <div id="item-2" class="mb-5 pb-4 border-bottom">
+                      <h4 class="text-primary"><i class="bi bi-gear me-2"></i>Nossa Historia</h4>
+                      <p>Fundada em 2010, a <strong>HeartCare</strong> surgiu da paixao de um grupo de cardiologistas que desejava criar um espaco acolhedor e tecnologico para o tratamento do coracao. Ao longo dos anos, nos tornamos referencia em cardiologia preventiva e intervencionista, sempre priorizando a confianca e o cuidado integral com nossos pacientes.</p>
+                    </div>
+                    <div id="item-3" class="mb-5 pb-4 border-bottom">
+                      <h4 class="text-primary"><i class="bi bi-lightning me-2"></i>Nossos Objetivos</h4>
+                      <p>Na <strong>HeartCare</strong>, buscamos nao apenas tratar doencas, mas tambem prevenir e educar para uma vida mais saudavel.</p>
+                    </div>
+                    <div id="item-3-1" class="mb-5 pb-4 border-bottom">
+                      <h5 class="text-secondary"><i class="bi bi-chevron-right me-2"></i>Prevencao e Diagnostico Precoce</h5>
+                      <p>Realizamos exames de alta precisao para identificar riscos cardiovasculares antes que se tornem problemas graves.
+                      </p>
+                    </div>
+                    <div id="item-3-2" class="mb-5">
+                      <h5 class="text-secondary"><i class="bi bi-chevron-right me-2"></i>Tratamento Personalizado</h5>
+                      <p>Desenvolvemos planos de tratamento individualizados, desde acompanhamento clinico ate procedimentos minimamente invasivos, sempre com foco na recuperacao e na qualidade de vida.</p>
+                    </div>
+                  </div>
                 </div>
-                <button type="submit" class="btn btn-primary w-100 mb-3">Enviar</button>
-            </div>
+              </div>
 
         </div> <!-- termino da div middle-content -->
 
@@ -82,7 +141,7 @@
                     <h6 class="menu-title">Menu</h6>
                     <ul>
                         <li><a class="menu-tip" href="/public/Home/home.html">Home</a></li>
-                        <li><a class="menu-tip" href="/public/About/about.html">Sobre nos</a></li>
+                        <li><a class="menu-tip" href="../About/about.html">Sobre nos</a></li>
                         <li><a class="menu-tip" href="/public/Servicos/servicos.html">Servicos</a></li>
                         <li><a class="menu-tip" href="/public/Contato/contato.html">Contato</a></li>
                     </ul>
