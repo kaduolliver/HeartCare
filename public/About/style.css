@@ -235,7 +235,7 @@ body {
     transform: scale(1.02);
 }
 
-/* Estilo para o ScrollSpy personalizado */
+/* Estilo para o ScrollSpy*/
 #navbar-example3 {
     background-color: rgba(30, 30, 63, 0.7);
     backdrop-filter: blur(10px);
