@@ -97,23 +97,6 @@ function showContent(section, button) {
           document.getElementById('email').value = data.email;
         });
 
-      const inputGroups = document.querySelectorAll('.input-group');
-      inputGroups.forEach(group => {
-        group.style.display = 'flex'; // Usar flexbox
-        group.style.alignItems = 'stretch'; // Garantir que os itens se alinhem e tenham a mesma altura
-      });
-
-      const buttons = document.querySelectorAll('.input-group button');
-      buttons.forEach(button => {
-        button.style.height = '100%'; // Garantir que o botão tenha a mesma altura que o input
-        button.style.flexShrink = '0'; // Impedir que o botão encolha
-      });
-
-      const inputs = document.querySelectorAll('.input-group input');
-      inputs.forEach(input => {
-        input.style.flexGrow = '1'; // Garantir que o input ocupe o espaço restante
-      });
-
       document.getElementById('editarEmail').addEventListener('click', () => {
         const emailInput = document.getElementById('email');
         if (emailInput.disabled) {
@@ -280,8 +263,8 @@ function showContent(section, button) {
             data.consultas.forEach(consulta => {
               const row = document.createElement('tr');
               row.innerHTML = `
-                <td>${consulta.dataAgendamento}</td>
-                <td>${consulta.dataConsulta}</td>
+                <td>${formatarData(consulta.data_agendamento)}</td>
+                <td>${formatarData(consulta.data_consulta)}</td> 
                 <td>${consulta.medico}</td>
                 <td>${consulta.especialidade}</td>
               `;
@@ -296,8 +279,19 @@ function showContent(section, button) {
           document.getElementById('tabelaConsultas').innerHTML = '<tr><td colspan="4">Erro ao carregar consultas.</td></tr>';
         });
 
-      break;
+      function formatarData(dataString) {
+        if (!dataString) return "Data inválida";
+        const options = {
+          year: 'numeric',
+          month: '2-digit',
+          day: '2-digit',
+          hour: '2-digit',
+          minute: '2-digit'
+        };
+        return new Date(dataString).toLocaleString('pt-BR', options);
+      }
 
+      break;
 
     case 'exames':
       contentArea.innerHTML = `
@@ -339,12 +333,12 @@ async function salvarSexoTipo() {
 document.addEventListener('DOMContentLoaded', async () => {
   const res = await fetch('/api/usuario');
   if (!res.ok) {
-    return window.location.href = '/login'; // Se não estiver logado, redireciona para login
+    return window.location.href = '/login';
   }
 
   const data = await res.json();
 
-  // Mostrar o botão de logout apenas se o usuário estiver logado
+
   if (data.nome) {
     document.getElementById('logout-button').style.display = 'inline-block';
   }
@@ -356,7 +350,7 @@ document.getElementById('logout-button')?.addEventListener('click', () => {
   })
     .then(res => {
       if (res.ok) {
-        window.location.href = '/login'; // Redireciona para a página de login
+        window.location.href = '/login';
       } else {
         alert('Erro ao fazer logout');
       }

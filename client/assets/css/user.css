@@ -390,3 +390,17 @@ body {
 .content-area button:hover {
     background-color: #14142b;
 }
+
+.input-group {
+    display: flex;
+    align-items: stretch;
+  }
+  
+  .input-group input {
+    flex-grow: 1;
+  }
+  
+  .input-group button {
+    flex-shrink: 0;
+    height: 45px;
+  }

@@ -172,13 +172,11 @@ app.post('/api/consulta', async (req, res) => {
     }
 
     try {
-        // Salvar a consulta no banco de dados
         const result = await pool.query(
             'INSERT INTO consultas (cpf_usuario, especialidade, medico, data_consulta, data_agendamento) VALUES ($1, $2, $3, $4, $5) RETURNING id',
             [req.session.usuario.cpf, especialidade, medico, dataConsulta, new Date().toISOString()]
         );
 
-        // Retornar a resposta com os dados da consulta
         res.json({ sucesso: true, consulta: result.rows[0] });
     } catch (err) {
         console.error(err);
