@@ -117,14 +117,14 @@ app.get('/api/usuario', async (req, res) => {
     }
 });
 
-// Atualiza e-mail
+
 app.put('/api/usuario/email', async (req, res) => {
     if (!req.session.usuario) return res.status(401).json({ erro: 'Não autenticado' });
 
     const { email } = req.body;
     try {
         await pool.query('UPDATE usuarios SET email = $1 WHERE cpf = $2', [email, req.session.usuario.cpf]);
-        req.session.usuario.email = email; // atualiza sessão também
+        req.session.usuario.email = email; 
         res.json({ sucesso: true });
     } catch (err) {
         console.error(err);

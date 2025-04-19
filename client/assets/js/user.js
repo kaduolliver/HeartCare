@@ -228,56 +228,95 @@ function showContent(section, button) {
 
     case 'marcar':
       contentArea.innerHTML = `
-            <h2>Marcar Consulta</h2>
-            <form>
-              <div class="mb-3">
-                <label for="especialidade" class="form-label">Especialidade</label>
-                <select id="especialidade" class="form-control">
-                  <option value="">Escolha a especialidade</option>
-                  <option value="Cardiologia">Cardiologia</option>
-                  <option value="Clinico Geral">Clinico Geral</option>
-                  <option value="Endocrinologia">Endocrinologia</option>
-                  <option value="Neurologia">Neurologia</option>
-                </select>
-              </div>
-    
-              <div class="mb-3">
-                <label for="medico" class="form-label">Medico</label>
-                <select id="medico" class="form-control">
-                  <option value="">Escolha o medico</option>
-                  <option value="Dr. Joao Silva">Dr. Joao Silva</option>
-                  <option value="Dra. Ana Lima">Dra. Ana Lima</option>
-                </select>
-              </div>
-    
-              <div class="mb-3">
-                <label for="dataConsulta" class="form-label">Data e Hora</label>
-                <input type="datetime-local" id="dataConsulta" class="form-control">
-              </div>
-    
-              <button type="button" class="btn btn-success mt-2" onclick="agendarConsulta()">Agendar</button>
-            </form>
+          <h2>Marcar Consulta</h2>
+          <form>
+            <div class="mb-3">
+              <label for="especialidade" class="form-label">Especialidade</label>
+              <select id="especialidade" class="form-control">
+                <option value="">Escolha a especialidade</option>
+                <option value="Cardiologia Clínica">Cardiologia Clinica</option>
+                <option value="Cardiologia Intervencionista">Cardiologia Intervencionista</option>
+                <option value="Arritmologia e Eletrofisiologia">Arritmologia e Eletrofisiologia</option>
+                <option value="Cardiologia Pediátrica">Cardiologia Pediatrica</option>
+                <option value="Cardiologia do Esporte">Cardiologia do Esporte</option>
+                <option value="Cardiologia Geriátrica">Cardiologia Geriatrica</option>
+                <option value="Insuficiência Cardíaca e Transplante">Insuficiencia Cardiaca e Transplante</option>
+                <option value="Imagenologia Cardiovascular">Imagenologia Cardiovascular</option>
+                <option value="Cardiologia Preventiva">Cardiologia Preventiva</option>
+                <option value="Cardiologia de Emergência">Cardiologia de Emergencia</option>
+              </select>
+            </div>
+      
+            <div class="mb-3">
+              <label for="medico" class="form-label">Medico</label>
+              <select id="medico" class="form-control">
+                <option value="">Escolha o medico</option>
+              </select>
+            </div>
+      
+            <div class="mb-3">
+              <label for="dataConsulta" class="form-label">Data e Hora</label>
+              <input type="datetime-local" id="dataConsulta" class="form-control">
+            </div>
+      
+            <button type="button" class="btn btn-success mt-2" onclick="agendarConsulta()">Agendar</button>
+          </form>
         `;
+
+      // Script para preencher médicos com base na especialidade
+      setTimeout(() => {
+        const especialidadeSelect = document.getElementById('especialidade');
+        const medicoSelect = document.getElementById('medico');
+
+        const especialidadesMedicos = {
+          'Cardiologia Clínica': ['Dra. Ana Lucia Mendes'],
+          'Cardiologia Intervencionista': ['Dr. Carlos Eduardo Rocha'],
+          'Arritmologia e Eletrofisiologia': ['Dra. Fernanda Oliveira Almeida'],
+          'Cardiologia Pediátrica': ['Dr. Rafael Torres Almeida'],
+          'Cardiologia do Esporte': ['Dra. Juliana Costa Lima'],
+          'Cardiologia Geriátrica': ['Dr. Marcelo Henrique Barbosa'],
+          'Insuficiência Cardíaca e Transplante': ['Dra. Patricia Souza Martins'],
+          'Imagenologia Cardiovascular': ['Dr. Lucas Pereira Gomes'],
+          'Cardiologia Preventiva': ['Dra. Camila Ribeiro Dias'],
+          'Cardiologia de Emergência': ['Dr. Diego Nascimento Silva']
+        };
+
+        especialidadeSelect.addEventListener('change', () => {
+          const especialidadeSelecionada = especialidadeSelect.value;
+          medicoSelect.innerHTML = '<option value="">Escolha o medico</option>';
+
+          if (especialidadeSelecionada && especialidadesMedicos[especialidadeSelecionada]) {
+            especialidadesMedicos[especialidadeSelecionada].forEach(medico => {
+              const option = document.createElement('option');
+              option.value = medico;
+              option.textContent = medico;
+              medicoSelect.appendChild(option);
+            });
+          }
+        });
+      }, 0);
 
       break;
 
+
+
     case 'agendadas':
       contentArea.innerHTML = `
-            <h2 class="mb-4">Consultas Agendadas</h2>
-<div class="table-responsive">
-  <table class="table table-hover table-bordered rounded shadow-sm">
-    <thead class="table-primary">
-      <tr>
-        <th>Data e Hora do Agendamento</th>
-        <th>Data da Consulta</th>
-        <th>Medico</th>
-        <th>Especialidade</th>
-      </tr>
-    </thead>
-    <tbody id="tabelaConsultas">
-    </tbody>
-  </table>
-</div>
+        <h2 class="mb-4">Consultas Agendadas</h2>
+        <div class="table-responsive">
+          <table class="table table-hover table-bordered rounded shadow-sm">
+            <thead class="table-primary">
+              <tr>
+                <th>Data e Hora do Agendamento</th>
+                <th>Data da Consulta</th>
+                <th>Medico</th>
+                <th>Especialidade</th>
+              </tr>
+            </thead>
+            <tbody id="tabelaConsultas">
+            </tbody>
+          </table>
+        </div>
         `;
 
       fetch('/api/consultas/agendadas')
