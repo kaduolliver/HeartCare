@@ -234,16 +234,16 @@ function showContent(section, button) {
               <label for="especialidade" class="form-label">Especialidade</label>
               <select id="especialidade" class="form-control">
                 <option value="">Escolha a especialidade</option>
-                <option value="Cardiologia Clínica">Cardiologia Clinica</option>
+                <option value="Cardiologia Clinica">Cardiologia Clinica</option>
                 <option value="Cardiologia Intervencionista">Cardiologia Intervencionista</option>
                 <option value="Arritmologia e Eletrofisiologia">Arritmologia e Eletrofisiologia</option>
-                <option value="Cardiologia Pediátrica">Cardiologia Pediatrica</option>
+                <option value="Cardiologia Pediatrica">Cardiologia Pediatrica</option>
                 <option value="Cardiologia do Esporte">Cardiologia do Esporte</option>
-                <option value="Cardiologia Geriátrica">Cardiologia Geriatrica</option>
-                <option value="Insuficiência Cardíaca e Transplante">Insuficiencia Cardiaca e Transplante</option>
+                <option value="Cardiologia Geriatrica">Cardiologia Geriatrica</option>
+                <option value="Insuficiencia Cardiaca e Transplante">Insuficiencia Cardiaca e Transplante</option>
                 <option value="Imagenologia Cardiovascular">Imagenologia Cardiovascular</option>
                 <option value="Cardiologia Preventiva">Cardiologia Preventiva</option>
-                <option value="Cardiologia de Emergência">Cardiologia de Emergencia</option>
+                <option value="Cardiologia de Emergencia">Cardiologia de Emergencia</option>
               </select>
             </div>
       
@@ -269,16 +269,16 @@ function showContent(section, button) {
         const medicoSelect = document.getElementById('medico');
 
         const especialidadesMedicos = {
-          'Cardiologia Clínica': ['Dra. Ana Lucia Mendes'],
+          'Cardiologia Clinica': ['Dra. Ana Lucia Mendes'],
           'Cardiologia Intervencionista': ['Dr. Carlos Eduardo Rocha'],
           'Arritmologia e Eletrofisiologia': ['Dra. Fernanda Oliveira Almeida'],
-          'Cardiologia Pediátrica': ['Dr. Rafael Torres Almeida'],
+          'Cardiologia Pediatrica': ['Dr. Rafael Torres Almeida'],
           'Cardiologia do Esporte': ['Dra. Juliana Costa Lima'],
-          'Cardiologia Geriátrica': ['Dr. Marcelo Henrique Barbosa'],
-          'Insuficiência Cardíaca e Transplante': ['Dra. Patricia Souza Martins'],
+          'Cardiologia Geriatrica': ['Dr. Marcelo Henrique Barbosa'],
+          'Insuficiencia Cardiaca e Transplante': ['Dra. Patricia Souza Martins'],
           'Imagenologia Cardiovascular': ['Dr. Lucas Pereira Gomes'],
           'Cardiologia Preventiva': ['Dra. Camila Ribeiro Dias'],
-          'Cardiologia de Emergência': ['Dr. Diego Nascimento Silva']
+          'Cardiologia de Emergencia': ['Dr. Diego Nascimento Silva']
         };
 
         especialidadeSelect.addEventListener('change', () => {
@@ -297,8 +297,6 @@ function showContent(section, button) {
       }, 0);
 
       break;
-
-
 
     case 'agendadas':
       contentArea.innerHTML = `

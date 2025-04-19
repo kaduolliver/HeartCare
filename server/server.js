@@ -124,7 +124,7 @@ app.put('/api/usuario/email', async (req, res) => {
     const { email } = req.body;
     try {
         await pool.query('UPDATE usuarios SET email = $1 WHERE cpf = $2', [email, req.session.usuario.cpf]);
-        req.session.usuario.email = email; 
+        req.session.usuario.email = email;
         res.json({ sucesso: true });
     } catch (err) {
         console.error(err);
@@ -172,18 +172,32 @@ app.post('/api/consulta', async (req, res) => {
     }
 
     try {
+        // Buscar o CRM do médico pelo nome
+        const resultadoMedico = await pool.query(
+            'SELECT crm FROM medicos WHERE nome = $1',
+            [medico]
+        );
+
+        if (resultadoMedico.rows.length === 0) {
+            return res.status(404).json({ erro: 'Médico não encontrado' });
+        }
+
+        const crm_medico = resultadoMedico.rows[0].crm;
+
+        // Inserir a consulta incluindo o CRM
         const result = await pool.query(
-            'INSERT INTO consultas (cpf_usuario, especialidade, medico, data_consulta, data_agendamento) VALUES ($1, $2, $3, $4, $5) RETURNING id',
-            [req.session.usuario.cpf, especialidade, medico, dataConsulta, new Date().toISOString()]
+            `INSERT INTO consultas (cpf_usuario, especialidade, medico, data_consulta, data_agendamento, crm_medico)
+             VALUES ($1, $2, $3, $4, $5, $6) RETURNING id`,
+            [req.session.usuario.cpf, especialidade, medico, dataConsulta, new Date().toISOString(), crm_medico]
         );
 
         res.json({ sucesso: true, consulta: result.rows[0] });
+
     } catch (err) {
         console.error(err);
         res.status(500).json({ erro: 'Erro ao agendar consulta' });
     }
 });
-
 
 app.get('/api/consultas/agendadas', async (req, res) => {
     if (!req.session.usuario) {
