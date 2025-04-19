@@ -303,14 +303,11 @@ body {
 
 .container-table {
     height: 80vh;
-    /* Altura fixa para a tabela */
     max-width: 1200px;
-    /* Tamanho máximo da tabela */
     width: 100%;
     overflow: hidden;
 }
 
-/* Centralizando a tabela na página */
 .full-screen-container {
     position: relative;
     top: 100px;
@@ -320,18 +317,15 @@ body {
     height: 100vh;
 }
 
-/* Estilizando a tabela */
 .table-container {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     overflow: hidden;
-    height: 100%;
+    height: 110%;
 }
 
-/* Estilo para a coluna do menu */
 .menutable {
     background-color: #1e1e3f;
-    /* Cor de fundo personalizada */
     color: white;
     padding: 30px;
     height: 100%;
@@ -354,7 +348,6 @@ body {
     border-radius: 0.375rem;
 }
 
-/* Estilo para a coluna de conteúdo */
 .content-area {
     padding: 30px;
     background-color: white;
@@ -364,7 +357,6 @@ body {
     overflow-y: auto;
 }
 
-/* Botões personalizados */
 .btn-custom {
     background-color: #1e1e3f;
     color: white;
@@ -385,7 +377,6 @@ body {
     font-size: 0.95rem;
 }
 
-/* Botões da área da direita */
 .content-area button {
     background-color: #1e1e3f;
     color: white;

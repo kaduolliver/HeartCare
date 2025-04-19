@@ -102,25 +102,6 @@ app.post('/login', async (req, res) => {
     }
 });
 
-app.put('/api/usuario', async (req, res) => {
-    if (!req.session.usuario) return res.status(401).json({ erro: 'Não autenticado' });
-
-    const cpf = req.session.usuario.cpf;
-    const { sexo, tipo_sanguineo } = req.body;
-
-    try {
-        await pool.query(
-            'UPDATE usuarios SET sexo = $1, tipo_sanguineo = $2 WHERE cpf = $3',
-            [sexo, tipo_sanguineo, cpf]
-        );
-        res.json({ sucesso: true });
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({ erro: 'Erro ao atualizar os dados' });
-    }
-});
-
-// GET - dados do usuário logado
 app.get('/api/usuario', async (req, res) => {
     if (!req.session.usuario) return res.status(401).json({ erro: 'Não autenticado' });
 
@@ -136,16 +117,45 @@ app.get('/api/usuario', async (req, res) => {
     }
 });
 
-// PUT - atualiza sexo e tipo sanguíneo
+// Atualiza e-mail
+app.put('/api/usuario/email', async (req, res) => {
+    if (!req.session.usuario) return res.status(401).json({ erro: 'Não autenticado' });
+
+    const { email } = req.body;
+    try {
+        await pool.query('UPDATE usuarios SET email = $1 WHERE cpf = $2', [email, req.session.usuario.cpf]);
+        req.session.usuario.email = email; // atualiza sessão também
+        res.json({ sucesso: true });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ erro: 'Erro ao atualizar e-mail' });
+    }
+});
+
+app.put('/api/usuario/senha', async (req, res) => {
+    if (!req.session.usuario) return res.status(401).json({ erro: 'Não autenticado' });
+
+    const { senha } = req.body;
+    try {
+        const hash = await bcrypt.hash(senha, 10);
+        await pool.query('UPDATE usuarios SET senha = $1 WHERE cpf = $2', [hash, req.session.usuario.cpf]);
+        res.json({ sucesso: true });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ erro: 'Erro ao atualizar senha' });
+    }
+});
+
+
 app.put('/api/usuario', async (req, res) => {
     if (!req.session.usuario) return res.status(401).json({ erro: 'Não autenticado' });
 
-    const { sexo, tipo_sanguineo } = req.body;
+    const { sexo, tipo_sanguineo, telefone, endereco } = req.body;
 
     try {
         await pool.query(
-            'UPDATE usuarios SET sexo = $1, tipo_sanguineo = $2 WHERE cpf = $3',
-            [sexo, tipo_sanguineo, req.session.usuario.cpf]
+            'UPDATE usuarios SET sexo = $1, tipo_sanguineo = $2, telefone = $3, endereco = $4 WHERE cpf = $5',
+            [sexo, tipo_sanguineo, telefone, endereco, req.session.usuario.cpf]
         );
         res.status(200).json({ mensagem: 'Atualizado com sucesso' });
     } catch (err) {
@@ -154,14 +164,57 @@ app.put('/api/usuario', async (req, res) => {
     }
 });
 
-app.get('/user', (req, res) => {
+app.post('/api/consulta', async (req, res) => {
+    const { especialidade, medico, dataConsulta } = req.body;
+
     if (!req.session.usuario) {
-      return res.redirect('/login'); // Redireciona se não houver usuário na sessão
+        return res.status(401).json({ erro: 'Usuário não autenticado' });
     }
 
-    // Envia os dados do usuário para a página
-    res.render('user', { usuario: req.session.usuario });
-  });  
+    try {
+        // Salvar a consulta no banco de dados
+        const result = await pool.query(
+            'INSERT INTO consultas (cpf_usuario, especialidade, medico, data_consulta, data_agendamento) VALUES ($1, $2, $3, $4, $5) RETURNING id',
+            [req.session.usuario.cpf, especialidade, medico, dataConsulta, new Date().toISOString()]
+        );
+
+        // Retornar a resposta com os dados da consulta
+        res.json({ sucesso: true, consulta: result.rows[0] });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ erro: 'Erro ao agendar consulta' });
+    }
+});
+
+
+app.get('/api/consultas/agendadas', async (req, res) => {
+    if (!req.session.usuario) {
+        return res.status(401).json({ erro: 'Usuário não autenticado' });
+    }
+
+    try {
+        const result = await pool.query(
+            'SELECT * FROM consultas WHERE cpf_usuario = $1 ORDER BY data_consulta',
+            [req.session.usuario.cpf]
+        );
+
+        res.json({ consultas: result.rows });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ erro: 'Erro ao buscar consultas agendadas' });
+    }
+});
+
+
+
+app.get('/user', (req, res) => {
+    if (!req.session.usuario) {
+        return res.redirect('/login');
+    }
+
+    res.sendFile(path.join(__dirname, '..', 'client', 'pages', 'user.html'));
+});
+
 
 app.get('/logout', (req, res) => {
     req.session.destroy((err) => {

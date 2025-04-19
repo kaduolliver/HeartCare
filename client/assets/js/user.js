@@ -12,6 +12,57 @@ window.addEventListener('scroll', function () {
 
 /*----------------------------------AREA DE TESTE - TABELA ----------------------------------*/
 
+/* Máscaras de CPF e Telefone */
+function formatarCPF(cpf) {
+  return cpf.replace(/\D/g, '')
+    .replace(/(\d{3})(\d)/, '$1.$2')
+    .replace(/(\d{3})(\d)/, '$1.$2')
+    .replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+}
+
+function formatarTelefone(telefone) {
+  telefone = telefone.replace(/\D/g, '').slice(0, 11);
+  return telefone
+    .replace(/^(\d{2})(\d)/g, '($1) $2')
+    .replace(/(\d{5})(\d)/, '$1-$2');
+}
+
+function agendarConsulta() {
+  const especialidade = document.getElementById('especialidade').value;
+  const medico = document.getElementById('medico').value;
+  const dataConsulta = document.getElementById('dataConsulta').value;
+
+  console.log('Especialidade:', especialidade);
+  console.log('Medico:', medico);
+  console.log('Data da consulta:', dataConsulta);
+
+
+  if (!especialidade || !medico || !dataConsulta) {
+    alert("Por favor, preencha todos os campos.");
+    return;
+  }
+
+  // Enviar para a API
+  fetch('/api/consulta', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ especialidade, medico, dataConsulta })
+  })
+    .then(res => res.json())
+    .then(data => {
+      if (data.sucesso) {
+        alert("Consulta agendada com sucesso!");
+      } else {
+        alert("Erro ao agendar consulta.");
+      }
+    })
+    .catch(err => {
+      console.error('Erro:', err);
+      alert("Erro ao agendar consulta.");
+    });
+}
+
+
 function showContent(section, button) {
   const contentArea = document.getElementById('content-area');
   const buttons = document.querySelectorAll('.menu-button');
@@ -21,27 +72,105 @@ function showContent(section, button) {
   switch (section) {
     case 'perfil':
       contentArea.innerHTML = `
-        <h2>Perfil</h2>
-        <form>
-          <label for="email">Novo E-mail:</label>
-          <input type="email" id="email" class="form-control" placeholder="Digite seu novo e-mail">
+        <h2 class="mb-4">Perfil</h2>
+        
+        <div class="mb-3">
+            <label for="email" class="form-label">E-mail</label>
+            <div class="input-group">
+                <input type="email" id="email" class="form-control" disabled>
+                <button class="btn btn-outline-primary" id="editarEmail">Alterar</button>
+            </div>
+        </div>
 
-          <label for="senha">Nova Senha:</label>
-          <input type="password" id="senha" class="form-control" placeholder="Digite sua nova senha">
+        <div class="mb-3">
+            <label for="senha" class="form-label">Senha</label>
+            <div class="input-group">
+                <input type="password" id="senha" class="form-control" value="********" disabled>
+                <button class="btn btn-outline-primary" id="editarSenha">Alterar</button>
+            </div>
+        </div>
+    `;
 
-          <button class="btn btn-primary mt-2">Salvar Alterações</button>
-        </form>
-      `;
+      fetch('/api/usuario')
+        .then(res => res.json())
+        .then(data => {
+          document.getElementById('email').value = data.email;
+        });
+
+      const inputGroups = document.querySelectorAll('.input-group');
+      inputGroups.forEach(group => {
+        group.style.display = 'flex'; // Usar flexbox
+        group.style.alignItems = 'stretch'; // Garantir que os itens se alinhem e tenham a mesma altura
+      });
+
+      const buttons = document.querySelectorAll('.input-group button');
+      buttons.forEach(button => {
+        button.style.height = '100%'; // Garantir que o botão tenha a mesma altura que o input
+        button.style.flexShrink = '0'; // Impedir que o botão encolha
+      });
+
+      const inputs = document.querySelectorAll('.input-group input');
+      inputs.forEach(input => {
+        input.style.flexGrow = '1'; // Garantir que o input ocupe o espaço restante
+      });
+
+      document.getElementById('editarEmail').addEventListener('click', () => {
+        const emailInput = document.getElementById('email');
+        if (emailInput.disabled) {
+          emailInput.disabled = false;
+          emailInput.focus();
+          document.getElementById('editarEmail').textContent = "Salvar";
+        } else {
+          const novoEmail = emailInput.value.trim();
+          fetch('/api/usuario/email', {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: novoEmail })
+          })
+            .then(res => res.json())
+            .then(data => {
+              if (data.sucesso) {
+                emailInput.disabled = true;
+                document.getElementById('editarEmail').textContent = "Alterar";
+                alert("E-mail atualizado com sucesso.");
+              } else {
+                alert('Erro ao atualizar e-mail');
+              }
+            });
+        }
+      });
+
+      document.getElementById('editarSenha').addEventListener('click', () => {
+        const novaSenha = prompt("Digite a nova senha:");
+        if (novaSenha && novaSenha.length >= 6) {
+          fetch('/api/usuario/senha', {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ senha: novaSenha })
+          })
+            .then(res => res.json())
+            .then(data => {
+              if (data.sucesso) {
+                alert("Senha atualizada com sucesso.");
+              } else {
+                alert("Erro ao atualizar senha.");
+              }
+            });
+        } else if (novaSenha !== null) {
+          alert("A senha deve ter pelo menos 6 caracteres.");
+        }
+      });
       break;
+
 
     case 'dados':
       contentArea.innerHTML = `
           <h2>Dados Pessoais</h2>
           <form>
             <label for="nome">Nome:</label>
-            <input type="text" id="nome" class="form-control" placeholder="Nome completo" readonly>
+            <input type="text" id="nome" class="form-control" placeholder="Nome completo" disabled readonly>
             <label for="cpf">CPF:</label>
-            <input type="text" id="cpf" class="form-control" placeholder="CPF" readonly>
+            <input type="text" id="cpf" class="form-control" placeholder="CPF" disabled readonly>
             <label for="endereco">Endereco:</label>
             <input type="text" id="endereco" class="form-control" placeholder="Endereco">
             <label for="telefone">Telefone:</label>
@@ -74,62 +203,101 @@ function showContent(section, button) {
         .then(res => res.json())
         .then(data => {
           document.getElementById('nome').value = data.nome || '';
-          document.getElementById('cpf').value = data.cpf || '';
+          document.getElementById('cpf').value = formatarCPF(data.cpf || '');
           document.getElementById('endereco').value = data.endereco || '';
-          document.getElementById('telefone').value = data.telefone || '';
+
+          const telefoneInput = document.getElementById('telefone');
+          telefoneInput.value = formatarTelefone(data.telefone || '');
+          telefoneInput.addEventListener('input', () => {
+            telefoneInput.value = formatarTelefone(telefoneInput.value);
+          });
+
           document.getElementById('sexo').value = data.sexo || '';
           document.getElementById('tipo_sanguineo').value = data.tipo_sanguineo || '';
         })
         .catch(err => console.error('Erro ao preencher dados:', err));
+
       break;
 
     case 'marcar':
       contentArea.innerHTML = `
-        <h2>Marcar Consulta</h2>
-        <form>
-          <select class="form-control">
-            <option value="">Escolha a especialidade</option>
-            <option>Cardiologia</option>
-            <option>Clinico Geral</option>
-            <option>Endocrinologia</option>
-            <option>Neurologia</option>
-          </select>
+            <h2>Marcar Consulta</h2>
+            <form>
+              <div class="mb-3">
+                <label for="especialidade" class="form-label">Especialidade</label>
+                <select id="especialidade" class="form-control">
+                  <option value="">Escolha a especialidade</option>
+                  <option value="Cardiologia">Cardiologia</option>
+                  <option value="Clinico Geral">Clinico Geral</option>
+                  <option value="Endocrinologia">Endocrinologia</option>
+                  <option value="Neurologia">Neurologia</option>
+                </select>
+              </div>
+    
+              <div class="mb-3">
+                <label for="medico" class="form-label">Medico</label>
+                <select id="medico" class="form-control">
+                  <option value="">Escolha o medico</option>
+                  <option value="Dr. Joao Silva">Dr. Joao Silva</option>
+                  <option value="Dra. Ana Lima">Dra. Ana Lima</option>
+                </select>
+              </div>
+    
+              <div class="mb-3">
+                <label for="dataConsulta" class="form-label">Data e Hora</label>
+                <input type="datetime-local" id="dataConsulta" class="form-control">
+              </div>
+    
+              <button type="button" class="btn btn-success mt-2" onclick="agendarConsulta()">Agendar</button>
+            </form>
+        `;
 
-          <select class="form-control">
-            <option value="">Escolha o medico</option>
-            <option>Dr. Joao Silva</option>
-            <option>Dra. Ana Lima</option>
-          </select>
-
-          <input type="datetime-local" class="form-control">
-          <button class="btn btn-success mt-2">Agendar</button>
-        </form>
-      `;
       break;
 
     case 'agendadas':
       contentArea.innerHTML = `
-        <h2>Consultas Agendadas</h2>
-        <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th>Data do Agendamento</th>
-              <th>Data da Consulta</th>
-              <th>Medico</th>
-              <th>Especialidade</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>18/04/2025 - 10:00</td>
-              <td>20/04/2025 - 14:30</td>
-              <td>Dr. Joao Silva</td>
-              <td>Cardiologia</td>
-            </tr>
-          </tbody>
-        </table>
-      `;
+            <h2>Consultas Agendadas</h2>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Data e Hora do Agendamento</th>
+                        <th>Data da Consulta</th>
+                        <th>Medico</th>
+                        <th>Especialidade</th>
+                    </tr>
+                </thead>
+                <tbody id="tabelaConsultas">
+                    <!-- Consultas serão carregadas aqui -->
+                </tbody>
+            </table>
+        `;
+
+      fetch('/api/consultas/agendadas')
+        .then(res => res.json())
+        .then(data => {
+          const tabelaConsultas = document.getElementById('tabelaConsultas');
+          if (data.consultas && data.consultas.length > 0) {
+            data.consultas.forEach(consulta => {
+              const row = document.createElement('tr');
+              row.innerHTML = `
+                <td>${consulta.dataAgendamento}</td>
+                <td>${consulta.dataConsulta}</td>
+                <td>${consulta.medico}</td>
+                <td>${consulta.especialidade}</td>
+              `;
+              tabelaConsultas.appendChild(row);
+            });
+          } else {
+            tabelaConsultas.innerHTML = '<tr><td colspan="4">Nenhuma consulta agendada.</td></tr>';
+          }
+        })
+        .catch(err => {
+          console.error('Erro:', err);
+          document.getElementById('tabelaConsultas').innerHTML = '<tr><td colspan="4">Erro ao carregar consultas.</td></tr>';
+        });
+
       break;
+
 
     case 'exames':
       contentArea.innerHTML = `
@@ -146,12 +314,14 @@ function showContent(section, button) {
 async function salvarSexoTipo() {
   const sexo = document.getElementById('sexo').value;
   const tipo_sanguineo = document.getElementById('tipo_sanguineo').value;
+  const telefone = document.getElementById('telefone').value;
+  const endereco = document.getElementById('endereco').value;
 
   try {
     const res = await fetch('/api/usuario', {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ sexo, tipo_sanguineo })
+      body: JSON.stringify({ sexo, tipo_sanguineo, telefone, endereco })
     });
 
     if (!res.ok) throw new Error('Erro na atualização');
@@ -161,7 +331,10 @@ async function salvarSexoTipo() {
     alert('Erro ao salvar dados');
   }
 }
+
 /*----------------------------------AREA DE TESTE - TABELA ----------------------------------*/
+
+
 
 document.addEventListener('DOMContentLoaded', async () => {
   const res = await fetch('/api/usuario');
