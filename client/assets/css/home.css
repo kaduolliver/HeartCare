@@ -6,10 +6,13 @@ body {
     padding-bottom: 150px;
     margin: 0;
     background-image: url(../images/img/heart-background-home.jpg);
-    background-attachment: fixed;/* Deixa a imagem fixa durante a rolagem */
-    background-size: cover;/* Faz a imagem cobrir toda a área */
+    background-attachment: fixed;
+    /* Deixa a imagem fixa durante a rolagem */
+    background-size: cover;
+    /* Faz a imagem cobrir toda a área */
     background-position: center;
-    height: 100vh;/* Faz o body ocupar toda a altura da janela */
+    height: 100vh;
+    /* Faz o body ocupar toda a altura da janela */
 }
 
 /* * {
@@ -17,7 +20,8 @@ body {
 /* }  */
 
 .content {
-    flex: 1;/* Faz o conteúdo principal ocupar o espaço entre o topo e a navegação */
+    flex: 1;
+    /* Faz o conteúdo principal ocupar o espaço entre o topo e a navegação */
 }
 
 .top-bar {
@@ -71,7 +75,7 @@ body {
 
 .nav-item-log {
     display: inline-block;
-  }  
+}
 
 .btn {
     color: white;
@@ -120,8 +124,9 @@ body {
 }
 
 .card-1:hover {
-    transform: translateY(-10px); /* Animação simples ao passar o mouse */
-   
+    transform: translateY(-10px);
+    /* Animação simples ao passar o mouse */
+
 }
 
 .modal-about {

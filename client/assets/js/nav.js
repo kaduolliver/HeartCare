@@ -1,24 +1,38 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    const perfilBtnContainer = document.getElementById('perfil-btn-container');
-    const agendarBtn = document.getElementById('btn-agendar');
+  const agendarConsultaBtn = document.querySelector('.nav-item-log a');
+  const perfilContainer = document.getElementById('perfil-btn-container');
   
-    try {
-      const res = await fetch('/api/usuario');
-      const data = await res.json();
-  
-      if (data.nome) {
-        // Botão de perfil ao lado do "Agendar Consulta"
-        const perfilBtn = document.createElement('a');
-        perfilBtn.className = 'button-card btn ms-2'; // "ms-2" do Bootstrap = margin-start 0.5rem
-        perfilBtn.href = '/pages/user.html';
-        perfilBtn.textContent = 'Perfil';
-        perfilBtnContainer.appendChild(perfilBtn);
-  
-        // Opcional: mudar o link do botão "Agendar Consulta" para uma área real se o usuário estiver logado
-        // agendarBtn.href = './user.html#marcar';
-      }
-    } catch (err) {
-      console.error('Erro ao verificar login:', err);
+  const exameBtn = document.getElementById('btn-exame');
+  const exameBtn2 = document.getElementById('btn-consultar-exame-2');
+  const agendamentoBtn = document.getElementById('btn-agendamento-online');
+
+  try {
+    const res = await fetch('/api/usuario');
+    const data = await res.json();
+
+    const userPage = '/pages/user.html';
+    const loginPage = '/pages/login.html';
+
+    const isLoggedIn = !!data.nome;
+
+    // Redirecionamentos
+    if (agendarConsultaBtn) agendarConsultaBtn.href = isLoggedIn ? userPage : loginPage;
+    if (exameBtn) exameBtn.href = isLoggedIn ? userPage : loginPage;
+    if (exameBtn2) exameBtn2.href = isLoggedIn ? userPage : loginPage;
+    if (agendamentoBtn) agendamentoBtn.href = isLoggedIn ? userPage : loginPage;
+
+    // Botão "Perfil"
+    if (isLoggedIn && perfilContainer && !document.getElementById('perfil-btn')) {
+      const perfilBtn = document.createElement('a');
+      perfilBtn.id = 'perfil-btn';
+      perfilBtn.className = 'button-card btn ms-2';
+      perfilBtn.href = userPage;
+      perfilBtn.textContent = 'Perfil';
+      perfilContainer.appendChild(perfilBtn);
     }
-  });
-  
+
+  } catch (err) {
+    console.error('Erro ao verificar login:', err);
+    if (agendarConsultaBtn) agendarConsultaBtn.href = '/pages/login.html';
+  }
+});
