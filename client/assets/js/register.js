@@ -79,10 +79,7 @@ document.getElementById("cadastroUsuario").addEventListener("submit", async (e) 
         body: new URLSearchParams(dados).toString(),
     });
 
-    if (response.redirected) {
-        window.location.href = response.url;
-    } else {
         const text = await response.text();
         alert(text);
-    }
+        window.location.href = "/pages/login.html";
 });
