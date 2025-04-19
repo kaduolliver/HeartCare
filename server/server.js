@@ -203,7 +203,16 @@ app.get('/api/consultas/agendadas', async (req, res) => {
     }
 });
 
-
+app.delete('/api/consultas/:id', async (req, res) => {
+    const idConsulta = req.params.id;
+    try {
+        await pool.query('DELETE FROM consultas WHERE id = $1', [idConsulta]);
+        res.status(200).json({ mensagem: 'Consulta cancelada com sucesso!' });
+    } catch (error) {
+        console.error('Erro ao cancelar consulta:', error);
+        res.status(500).json({ mensagem: 'Erro ao cancelar consulta.' });
+    }
+});
 
 app.get('/user', (req, res) => {
     if (!req.session.usuario) {

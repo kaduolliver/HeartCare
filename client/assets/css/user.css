@@ -404,3 +404,58 @@ body {
     flex-shrink: 0;
     height: 45px;
   }
+
+
+
+
+
+
+
+/* Estilização da seção de Consultas Agendadas */
+#content-area h2 {
+    font-weight: 600;
+    color: #1f487e;
+  }
+  
+  .table-responsive {
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  
+  .table {
+    margin-top: 20px;
+    background-color: #fff;
+  }
+  
+  .table thead {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .table th, .table td {
+    text-align: center;
+    vertical-align: middle;
+    padding: 12px;
+    font-size: 15px;
+  }
+  
+  .table-hover tbody tr:hover {
+    background-color: #f0f8ff;
+    transition: background-color 0.3s ease;
+  }
+  
+  .table-bordered th,
+  .table-bordered td {
+    border-color: #dee2e6;
+  }
+  
+  .shadow-sm {
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.05);
+  }
+  
+  /* Se tiver botão futuramente para cancelar consulta ou algo assim */
+  .btn-consulta {
+    padding: 5px 12px;
+    font-size: 14px;
+    border-radius: 8px;
+  }

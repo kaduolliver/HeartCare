@@ -62,6 +62,30 @@ function agendarConsulta() {
     });
 }
 
+document.addEventListener('click', async function (e) {
+  if (e.target.classList.contains('cancelar-btn')) {
+    const idConsulta = e.target.getAttribute('data-id');
+
+    if (confirm('Tem certeza que deseja cancelar esta consulta?')) {
+      try {
+        const resposta = await fetch(`/api/consultas/${idConsulta}`, {
+          method: 'DELETE'
+        });
+
+        if (resposta.ok) {
+          alert('Consulta cancelada com sucesso!');
+          e.target.closest('tr').remove();
+        } else {
+          const erro = await resposta.json();
+          alert(erro.mensagem || 'Erro ao cancelar consulta.');
+        }
+      } catch (error) {
+        console.error('Erro:', error);
+        alert('Erro de conexão ao tentar cancelar.');
+      }
+    }
+  }
+});
 
 function showContent(section, button) {
   const contentArea = document.getElementById('content-area');
@@ -239,26 +263,29 @@ function showContent(section, button) {
 
     case 'agendadas':
       contentArea.innerHTML = `
-            <h2>Consultas Agendadas</h2>
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>Data e Hora do Agendamento</th>
-                        <th>Data da Consulta</th>
-                        <th>Medico</th>
-                        <th>Especialidade</th>
-                    </tr>
-                </thead>
-                <tbody id="tabelaConsultas">
-                    <!-- Consultas serão carregadas aqui -->
-                </tbody>
-            </table>
+            <h2 class="mb-4">Consultas Agendadas</h2>
+<div class="table-responsive">
+  <table class="table table-hover table-bordered rounded shadow-sm">
+    <thead class="table-primary">
+      <tr>
+        <th>Data e Hora do Agendamento</th>
+        <th>Data da Consulta</th>
+        <th>Medico</th>
+        <th>Especialidade</th>
+      </tr>
+    </thead>
+    <tbody id="tabelaConsultas">
+    </tbody>
+  </table>
+</div>
         `;
 
       fetch('/api/consultas/agendadas')
         .then(res => res.json())
         .then(data => {
           const tabelaConsultas = document.getElementById('tabelaConsultas');
+          tabelaConsultas.innerHTML = ''; // Limpa antes de preencher
+
           if (data.consultas && data.consultas.length > 0) {
             data.consultas.forEach(consulta => {
               const row = document.createElement('tr');
@@ -267,16 +294,21 @@ function showContent(section, button) {
                 <td>${formatarData(consulta.data_consulta)}</td> 
                 <td>${consulta.medico}</td>
                 <td>${consulta.especialidade}</td>
+                <td>
+                  <button class="btn btn-danger btn-sm cancelar-btn" data-id="${consulta.id}">
+                    Cancelar
+                  </button>
+                </td>
               `;
               tabelaConsultas.appendChild(row);
             });
           } else {
-            tabelaConsultas.innerHTML = '<tr><td colspan="4">Nenhuma consulta agendada.</td></tr>';
+            tabelaConsultas.innerHTML = '<tr><td colspan="5">Nenhuma consulta agendada.</td></tr>';
           }
         })
         .catch(err => {
           console.error('Erro:', err);
-          document.getElementById('tabelaConsultas').innerHTML = '<tr><td colspan="4">Erro ao carregar consultas.</td></tr>';
+          document.getElementById('tabelaConsultas').innerHTML = '<tr><td colspan="5">Erro ao carregar consultas.</td></tr>';
         });
 
       function formatarData(dataString) {
@@ -338,9 +370,14 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   const data = await res.json();
 
-
   if (data.nome) {
     document.getElementById('logout-button').style.display = 'inline-block';
+
+    // Acessa o primeiro botão do menu (Perfil)
+    const perfilButton = document.querySelector('.menu-button');
+    if (perfilButton) {
+      showContent('perfil', perfilButton);
+    }
   }
 });
 
