@@ -12,7 +12,7 @@ window.addEventListener('scroll', function () {
 
 /*----------------------------------AREA DE TESTE - TABELA ----------------------------------*/
 
-/* Máscaras de CPF e Telefone */
+/* Funções para mascarar o CPF e Telefone */
 function formatarCPF(cpf) {
   return cpf.replace(/\D/g, '')
     .replace(/(\d{3})(\d)/, '$1.$2')
@@ -26,6 +26,8 @@ function formatarTelefone(telefone) {
     .replace(/^(\d{2})(\d)/g, '($1) $2')
     .replace(/(\d{5})(\d)/, '$1-$2');
 }
+
+/*Função para agendar consultas */
 
 function agendarConsulta() {
   const especialidade = document.getElementById('especialidade').value;
@@ -42,8 +44,7 @@ function agendarConsulta() {
     return;
   }
 
-  // Enviar para a API
-  fetch('/api/consulta', {
+  fetch('/api/consultas/agendar', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ especialidade, medico, dataConsulta })
@@ -317,7 +318,7 @@ function showContent(section, button) {
         </div>
         `;
 
-      fetch('/api/consultas/agendadas')
+      fetch('/api/consultas')
         .then(res => res.json())
         .then(data => {
           const tabelaConsultas = document.getElementById('tabelaConsultas');
@@ -381,7 +382,7 @@ async function salvarSexoTipo() {
   const endereco = document.getElementById('endereco').value;
 
   try {
-    const res = await fetch('/api/usuario', {
+    const res = await fetch('/api/usuario/dados', {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ sexo, tipo_sanguineo, telefone, endereco })

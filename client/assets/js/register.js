@@ -73,7 +73,7 @@ document.getElementById("cadastroUsuario").addEventListener("submit", async (e) 
         ConfirmarSenha: document.getElementById("ConfirmarSenha").value,
     };
 
-    const response = await fetch("/registro", {
+    const response = await fetch("/api/auth/register", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: new URLSearchParams(dados).toString(),
