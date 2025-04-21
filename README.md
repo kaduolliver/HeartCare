@@ -1,22 +1,26 @@
 # SOFTWARE TESTING PROJECT
 
-Projeto feito pelo grupo 7 para o trabalho AT2 de Teste de Software, professor Jefferson Salom„o Rodrigues.
+Projeto feito pelo grupo 7 para o trabalho AT2 de Teste de Software, professor Jefferson Salom√£o Rodrigues.
+
+### **HeartCare** ‚Äì Sistema de Gest√£o de Consultas M√©dicas Cardiol√≥gicas
+
+**HeartCare** √© um sistema web focado no agendamento, gerenciamento e visualiza√ß√£o de consultas m√©dicas, voltado para uma cl√≠nica especializada em cardiologia. O projeto simula um ambiente real de atendimento m√©dico, onde pacientes podem se registrar, fazer login e marcar consultas com m√©dicos de diversas especialidades da cardiologia.
 
 Desenvolvedores do projeto:
 
-<pre>- Amanda Mendes Reis de Ara˙jo
+<pre>- Amanda Mendes Reis de Ara√∫jo
 - Camila Graner Antunes de Oliveira
 - Carlos Eduardo Lima de Oliveira
-- Cau„ Aguiar Ferreira Gomes
+- Cau√£ Aguiar Ferreira Gomes
 - Kalleby Rodrigues Frutuoso</pre>
 
 ## ESTRUTURA DO PROJETO
 
-- SeparaÁ„o em front-end e back-end
-- OrganizaÁ„o em:
-    - `controllers/`: lÛgica dos endpoints 
-    - `routes/`: definiÁ„o das rotas da API
-    - `database/`: conex„o com banco
+- Separa√ß√£o em front-end e back-end
+- Organiza√ß√£o em:
+    - `controllers/`: l√≥gica dos endpoints 
+    - `routes/`: defini√ß√£o das rotas da API
+    - `database/`: conex√£o com banco
     - `client/`: arquivos HTML, CSS e JS
 
 - Uso do **Express** como framework de servidor
@@ -27,43 +31,43 @@ Desenvolvedores do projeto:
 
 - Estrutura de tabelas (`usuarios`, `consultas`, `medicos`)
 
-- **Chave prim·ria e estrangeira**
+- **Chave prim√°ria e estrangeira**
 
 - Tipos de dados (`VARCHAR`, `DATE`, `TIMESTAMP`)
 
-- Consultas b·sicas:
+- Consultas b√°sicas:
     - `INSERT`, `SELECT`, `UPDATE`, `DELETE`
-- Conex„o com Node usando `pg` e `Pool`
+- Conex√£o com Node usando `pg` e `Pool`
 
-- Uso de `.env` com vari·veis de conex„o
+- Uso de `.env` com vari√°veis de conex√£o
 
 ---
 
 
-## AUTENTICA«√O E SESS√O
+## AUTENTICA√á√ÉO E SESS√ÉO
 
 - Registro com senha criptografada `bcrypt`
 
-- Login com validaÁ„o e uso de `express-session`
+- Login com valida√ß√£o e uso de `express-session`
 
-- Armazenar dados do usu·rio na sess„o: `req.session.usuario`
+- Armazenar dados do usu√°rio na sess√£o: `req.session.usuario`
 
-- Logout (destruir sess„o)
+- Logout (destruir sess√£o)
 
 ---
 
 
 ## JAVASCRIPT NO FRONT-END
 
-- ManipulaÁ„o do DOM como `document.getElementById` e `innerHTML`
+- Manipula√ß√£o do DOM como `document.getElementById` e `innerHTML`
 
 - Escutar eventos `addEventListener`
 
-- FormataÁ„o de campos como **Telefone e CPF**
+- Formata√ß√£o de campos como **Telefone e CPF**
 
 - `fetch()` para consumir a API (GET, POST, PUT, DELETE)
 
-- ManipulaÁ„o de JSON e tratamento de erros com `try/catch`
+- Manipula√ß√£o de JSON e tratamento de erros com `try/catch`
 
 ---
 
@@ -74,7 +78,7 @@ Desenvolvedores do projeto:
 
 - Estrutura de rotas RESTful como `/api/usuario`, `/api/auth/login`
 
-- Corpo da requisiÁ„o: `application/json` vs `x-www-form-urlencoded`
+- Corpo da requisi√ß√£o: `application/json` vs `x-www-form-urlencoded`
 
 - `res.status()`, `res.send`, `res.json`
 
@@ -89,54 +93,54 @@ Desenvolvedores do projeto:
 
 - Estrutura de tabelas para exibir dados `<table>`
 
-- OrganizaÁ„o em p·ginas como `register.html`, `login.html`, `user.html`
+- Organiza√ß√£o em p√°ginas como `register.html`, `login.html`, `user.html`
 
 ---
 
 
-## Boas pr·ticas com Node.js
+## Boas pr√°ticas com Node.js
 
-- ModularizaÁ„o do cÛdigo `require`, `module.exports`
+- Modulariza√ß√£o do c√≥digo `require`, `module.exports`
 
 - Middleware com `body-parser`, `express-session`
 
-- Servir arquivos est·ticos com `express.static()`
+- Servir arquivos est√°ticos com `express.static()`
 
-- Uso de vari·veis de ambiente com `dotenv`
+- Uso de vari√°veis de ambiente com `dotenv`
 
 ---
 
 
-## LÛgica de Funcionalidades
+## L√≥gica de Funcionalidades
 
-- Cadastro com validaÁ„o
+- Cadastro com valida√ß√£o
 
 - Login e redirecionamento
 
-- EdiÁ„o de dados do perfil
+- Edi√ß√£o de dados do perfil
 
 - Agendamento de consulta
 
 - Cancelamento de consulta
 
-- ExibiÁ„o de dados com base no usu·rio logado
+- Exibi√ß√£o de dados com base no usu√°rio logado
 
 ---
 
 
-## TUTORIAL DE INSTALA«√O DO PROJETO
+## TUTORIAL DE INSTALA√á√ÉO DO PROJETO
 
-### PrÈ-requisitos
+### Pr√©-requisitos
 
-… necess·rio ter os seguintes programas instalados:
+√â necess√°rio ter os seguintes programas instalados:
 
-- Node.js (vers„o 16+)
+- Node.js (vers√£o 16+)
 
 - PostgreSQL
 
-- Git (para clonar o repositÛrio) **OBS:** caso queira fazer manualmente, pule o passo 1.
+- Git (para clonar o reposit√≥rio) **OBS:** caso queira fazer manualmente, pule o passo 1.
 
-### 1. Clonar o repositÛrio
+### 1. Clonar o reposit√≥rio
 
 <pre>git clone https://github.com/usuario/heartcare.git
 
@@ -156,15 +160,15 @@ DB_PORT=5432
 
 **OBS:**
 
-- **DB_USER** -> È o usuario do PostgreSQL, vem padr„o como `postgres`, mas se foi alterado na instalaÁ„o, ser· necess·rio ajustar de acordo;
+- **DB_USER** -> √© o usuario do PostgreSQL, vem padr√£o como `postgres`, mas se foi alterado na instala√ß√£o, ser√° necess√°rio ajustar de acordo;
 
-- **DB_HOST** -> padr„o (localhost);
+- **DB_HOST** -> padr√£o (localhost);
 
-- **DB_NAME** -> È necess·rio que seja `heartcare` (nome do banco de dados do programa);
+- **DB_NAME** -> √© necess√°rio que seja `heartcare` (nome do banco de dados do programa);
 
-- **DB_PASSWORD** -> vai depender de qual senha vocÍ colocou ao instalar o PostgreSQL;
+- **DB_PASSWORD** -> vai depender de qual senha voc√™ colocou ao instalar o PostgreSQL;
 
-- **DB_PORT** -> padr„o (5432).
+- **DB_PORT** -> padr√£o (5432).
 
 ### 3. Criar o banco de Dados no PostgreSQL
 
@@ -174,7 +178,7 @@ Abra o terminal do PostgreSQL (ou use uma GUI como DBeaver ou pgAdmin) e execute
 
 \c heartcare;
 
--- Tabela de usu·rios
+-- Tabela de usu√°rios
 CREATE TABLE usuarios (
   id SERIAL PRIMARY KEY,
   nome VARCHAR(100) NOT NULL,
@@ -188,7 +192,7 @@ CREATE TABLE usuarios (
   endereco TEXT
 );
 
--- Tabela de mÈdicos
+-- Tabela de m√©dicos
 CREATE TABLE medicos (
   crm VARCHAR(20) PRIMARY KEY,
   nome VARCHAR(100),
@@ -206,29 +210,29 @@ CREATE TABLE consultas (
 );
 </pre>
 
-### 3.1 Adicione os mÈdicos a tabela `medicos`
+### 3.1 Adicione os m√©dicos a tabela `medicos`
 
 <pre>INSERT INTO medicos (crm, nome, especialidade) VALUES
-('BA-789.123', 'Dr. Marcelo Henrique Barbosa', 'Cardiologia Geri·trica'),
-('CE-567.890', 'Dr. Diego Nascimento Silva', 'Cardiologia de EmergÍncia'),
+('BA-789.123', 'Dr. Marcelo Henrique Barbosa', 'Cardiologia Geri√°trica'),
+('CE-567.890', 'Dr. Diego Nascimento Silva', 'Cardiologia de Emerg√™ncia'),
 ('DF-345.678', 'Dra. Camila Ribeiro Dias', 'Cardiologia Preventiva'),
 ('MG-456.789', 'Dra. Fernanda Oliveira Almeida', 'Arritmologia e Eletrofisiologia'),
 ('PE-876-543', 'Dr. Lucas Pereira Gomes', 'Imagenologia Cardiovascular'),
 ('PR-654.321', 'Dra. Juliana Costa Lima', 'Cardiologia do Esporte'),
 ('RJ-987.654', 'Dr. Carlos Eduardo Rocha', 'Cardiologia Intervencionista'),
-('RS-321.987', 'Dr. Rafael Torres Almeida', 'Cardiologia Pedi·trica'),
-('SC-234.567', 'Dra. Patricia Souza Martins', 'InsuficiÍncia CardÌaca e Transplante'),
-('SP-123.456', 'Dra. Ana Lucia Mendes', 'Cardiologia ClÌnica');
+('RS-321.987', 'Dr. Rafael Torres Almeida', 'Cardiologia Pedi√°trica'),
+('SC-234.567', 'Dra. Patricia Souza Martins', 'Insufici√™ncia Card√≠aca e Transplante'),
+('SP-123.456', 'Dra. Ana Lucia Mendes', 'Cardiologia Cl√≠nica');
 </pre>
 
-### 4. Instalar dependÍncias
+### 4. Instalar depend√™ncias
 
 Dentro da raiz do projeto, rode:
 
 <pre>npm install
 </pre>
 
-**Lembrando:** a raiz do projeto È `/heartcare>`
+**Lembrando:** a raiz do projeto √© `/heartcare>`
 
 ### 5. Rodar o servidor
 
@@ -238,11 +242,11 @@ ou
 
 nodemon server/server.js</pre>
 
-O servidor estar· disponÌvel em:
+O servidor estar√° dispon√≠vel em:
 
 `http://localhost:3000`
 
-### 6. Acessar a aplicaÁ„o
+### 6. Acessar a aplica√ß√£o
 
 Abra seu navegador e acesse:
 
@@ -255,7 +259,7 @@ Abra seu navegador e acesse:
 
 - Login: `/pages/login.html`
 
-- ¡rea do usu·rio: `/pages/user.html`
+- √Årea do usu√°rio: `/pages/user.html`
 
 - Agendar Consulta: pela aba "Marcar Consulta"
 
