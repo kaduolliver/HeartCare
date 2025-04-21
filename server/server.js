@@ -146,7 +146,6 @@ app.put('/api/usuario/senha', async (req, res) => {
     }
 });
 
-
 app.put('/api/usuario', async (req, res) => {
     if (!req.session.usuario) return res.status(401).json({ erro: 'Não autenticado' });
 
