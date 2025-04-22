@@ -174,11 +174,7 @@ DB_PORT=5432
 
 ### 3. Criar o banco de Dados no PostgreSQL
 
-Abra o terminal do PostgreSQL (ou use uma GUI como DBeaver ou pgAdmin) e execute os comandos abaixo:
-
-<pre>CREATE DATABASE heartcare;
-
-\c heartcare;
+Entre no pgAdmin 4 e crie uma nova Database com o nome "heartcare", selecione a database criada e aperte em Query Tool (Alt+Shift+Q), copie os comandos e execute (F5):
 
 -- Tabela de usuários
 CREATE TABLE usuarios (
