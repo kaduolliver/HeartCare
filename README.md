@@ -142,7 +142,7 @@ Desenvolvedores do projeto:
 
 ### 1. Clonar o repositório
 
-<pre>git clone https://github.com/usuario/heartcare.git
+<pre>git clone https://github.com/kaduolliver/heartcare.git
 
 cd heartcare
 </pre>
