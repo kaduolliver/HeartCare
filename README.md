@@ -176,6 +176,7 @@ DB_PORT=5432
 
 Entre no pgAdmin 4 e crie uma nova Database com o nome "heartcare", selecione a database criada e aperte em Query Tool (Alt+Shift+Q), copie os comandos e execute (F5):
 
+<pre>
 -- Tabela de usuários
 CREATE TABLE usuarios (
   id SERIAL PRIMARY KEY,
