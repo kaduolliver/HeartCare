@@ -145,6 +145,8 @@ Desenvolvedores do projeto:
 <pre>git clone https://github.com/kaduolliver/heartcare.git
 
 cd heartcare
+
+code .
 </pre>
 
 ### 2. Criar o arquivo `.env` na raiz do projeto
