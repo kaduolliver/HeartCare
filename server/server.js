@@ -23,6 +23,7 @@ const usuarioRoutes = require('./routes/usuario');
 const consultasRoutes = require('./routes/consultas');
 const pageRoutes = require('./routes/pages');
 
+// API de autenticação
 app.use('/api/auth', authRoutes);
 app.use('/api/usuario', usuarioRoutes);
 app.use('/api/consultas', consultasRoutes);
