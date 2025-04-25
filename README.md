@@ -204,6 +204,7 @@ CREATE TABLE consultas (
   cpf_usuario VARCHAR(11) REFERENCES usuarios(cpf) ON DELETE CASCADE,
   crm_medico VARCHAR(20) REFERENCES medicos(crm),
   especialidade VARCHAR(100),
+  medico VARCHAR(100),
   data_agendamento TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   data_consulta TIMESTAMP
 );
