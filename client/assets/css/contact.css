@@ -1,3 +1,5 @@
+/* ******Configurações da página****** */
+
 body {
     flex-direction: column;
     position: relative;
@@ -5,20 +7,28 @@ body {
     padding-bottom: 150px;
     margin: 0;
     background-image: url(../images/img/medical-clinic-background-contact.jpg);
-    background-attachment: fixed;/* Deixa a imagem fixa durante a rolagem */
-    background-size: cover;/* Faz a imagem cobrir toda a área */
+    background-attachment: fixed;
+    background-size: cover;
     background-position: center;
     height: 100vh;
 }
 
-/* * {
+/* 
+
+******Debug******
+
+* {
     outline: 1px solid rgba(255, 0, 0, 0.3) !important;
-} */
+} 
+
+*/
 
 .content {
-    flex: 1;/* Faz o conteúdo principal ocupar o espaço entre o topo e a navegação */
-    position: relative; /* Permite posicionamento absoluto dentro desta div */
+    flex: 1;
+    position: relative;
 }
+
+/* ******Configurações da barra superior****** */
 
 .top-bar {
     position: relative;
@@ -34,8 +44,10 @@ body {
     justify-content: space-between;
     align-items: center;
     z-index: 1000;
-    transition: top 0.3s ease-in-out;/* Transição suave ao esconder/exibir */
+    transition: top 0.3s ease-in-out;
 }
+
+/* ******Configurações do menu da barra superior****** */
 
 #navbarNav {
     position: relative;
@@ -86,15 +98,17 @@ body {
     transform: scale(1.02);
 }
 
+/* ******Configurações do formulário central****** */
+
 .form-container {
     border-radius: 15px;
     padding: 40px;
     background-color: rgba(30, 30, 63, 0.9);
     color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 500px; /* Largura mÃ¡xima do formulÃ¡rio */
-    margin: 90px 0 90px auto; /* Margem superior e inferior de 90px, alinhado Ã  direita */
-    margin-right: 50%; /* Ajuste conforme necessÃ¡rio para afastar da borda direita */
+    max-width: 500px;
+    margin: 90px 0 90px auto;
+    margin-right: 50%;
 }
 
 .form-control {
@@ -102,17 +116,19 @@ body {
     border: 2px solid #ddd;
     border-radius: 8px;
     padding: 7px;
-  }
-  
-  .form-control:hover {
+}
+
+.form-control:hover {
     border-color: #a0a0a0;
-  }
-  
-  .form-control:focus {
+}
+
+.form-control:focus {
     outline: none;
     border-color: #1e1e3f;
     box-shadow: 0 0 0 3px #4a90e240;
-  }
+}
+
+/* ******Configurações da barra inferior****** */
 
 .bottom-bar {
     width: 100%;
@@ -130,6 +146,8 @@ body {
     align-items: center;
     margin-top: 20px;
 }
+
+/* ******Configurações dos itens/menu da barra inferior****** */
 
 .left-content {
     justify-content: space-between;
@@ -167,7 +185,7 @@ body {
 
 .menu-tip:hover {
     position: relative;
-    color:#47acaf;
+    color: #47acaf;
     transform: scale(1.02);
 }
 

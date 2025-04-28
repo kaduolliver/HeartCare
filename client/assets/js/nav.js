@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', async () => {
   const agendarConsultaBtn = document.querySelector('.nav-item-log a');
   const perfilContainer = document.getElementById('perfil-btn-container');
-  
+
   const exameBtn = document.getElementById('btn-exame');
   const exameBtn2 = document.getElementById('btn-consultar-exame-2');
   const agendamentoBtn = document.getElementById('btn-agendamento-online');
@@ -15,13 +15,13 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const isLoggedIn = !!data.nome;
 
-    // Redirecionamentos
+    /* ******Rediresionamentos****** */
     if (agendarConsultaBtn) agendarConsultaBtn.href = isLoggedIn ? userPage : loginPage;
     if (exameBtn) exameBtn.href = isLoggedIn ? userPage : loginPage;
     if (exameBtn2) exameBtn2.href = isLoggedIn ? userPage : loginPage;
     if (agendamentoBtn) agendamentoBtn.href = isLoggedIn ? userPage : loginPage;
 
-    // Botão "Perfil"
+    /* ******Botão "Perfil"****** */
     if (isLoggedIn && perfilContainer && !document.getElementById('perfil-btn')) {
       const perfilBtn = document.createElement('a');
       perfilBtn.id = 'perfil-btn';

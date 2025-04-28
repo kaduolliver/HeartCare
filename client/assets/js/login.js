@@ -10,9 +10,9 @@ window.addEventListener('scroll', function () {
     }
 });
 
-// Máscara de CPF no login
+/* ******Formatar CPF****** */
 document.getElementById('cpfInput').addEventListener('input', function (e) {
-    let value = e.target.value.replace(/\D/g, ''); // Remove tudo que não for dígito
+    let value = e.target.value.replace(/\D/g, ''); 
     let formattedValue = '';
 
     if (value.length > 0) {
@@ -31,7 +31,7 @@ document.getElementById('cpfInput').addEventListener('input', function (e) {
     e.target.value = formattedValue;
 });
 
-// Mostrar ou ocultar senha
+/* ******Monstrar ou ocultar senha****** */
 document.getElementById('showPasswordCheck').addEventListener('change', function () {
     const passwordInput = document.getElementById('passwordInput');
     passwordInput.type = this.checked ? 'text' : 'password';

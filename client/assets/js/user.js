@@ -10,9 +10,10 @@ window.addEventListener('scroll', function () {
   }
 });
 
-/*----------------------------------AREA DE TESTE - TABELA ----------------------------------*/
+/*---------------------------------- Área para tabela principal da página "user" ----------------------------------*/
 
-/* Funções para mascarar o CPF e Telefone */
+/* Funções para formatar o CPF e Telefone */
+
 function formatarCPF(cpf) {
   return cpf.replace(/\D/g, '')
     .replace(/(\d{3})(\d)/, '$1.$2')
@@ -37,8 +38,7 @@ function agendarConsulta() {
   console.log('Especialidade:', especialidade);
   console.log('Medico:', medico);
   console.log('Data da consulta:', dataConsulta);
-
-
+  
   if (!especialidade || !medico || !dataConsulta) {
     alert("Por favor, preencha todos os campos.");
     return;
@@ -87,6 +87,8 @@ document.addEventListener('click', async function (e) {
     }
   }
 });
+
+/* ******Função com switch case para exibir o conteúdo da tabela "usuário"****** */
 
 function showContent(section, button) {
   const contentArea = document.getElementById('content-area');
@@ -264,7 +266,6 @@ function showContent(section, button) {
           </form>
         `;
 
-      // Script para preencher médicos com base na especialidade
       setTimeout(() => {
         const especialidadeSelect = document.getElementById('especialidade');
         const medicoSelect = document.getElementById('medico');
@@ -396,8 +397,7 @@ async function salvarSexoTipo() {
   }
 }
 
-/*----------------------------------AREA DE TESTE - TABELA ----------------------------------*/
-
+/*---------------------------------- API LOGIN/LOGOUT ----------------------------------*/
 
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -411,7 +411,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   if (data.nome) {
     document.getElementById('logout-button').style.display = 'inline-block';
 
-    // Acessa o primeiro botão do menu (Perfil)
     const perfilButton = document.querySelector('.menu-button');
     if (perfilButton) {
       showContent('perfil', perfilButton);
@@ -420,7 +419,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 document.getElementById('logout-button')?.addEventListener('click', () => {
-  fetch('/logout', {
+  fetch('/api/auth/logout', {
     method: 'GET'
   })
     .then(res => {

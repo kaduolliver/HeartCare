@@ -1,3 +1,5 @@
+/* ******Configurações da página****** */
+
 body {
     display: flex;
     flex-direction: column;
@@ -7,22 +9,28 @@ body {
     margin: 0;
     background-image: url(../images/img/medical-structure-background-service-user.jpg);
     background-attachment: fixed;
-    /* Deixa a imagem fixa durante a rolagem */
     background-size: cover;
-    /* Faz a imagem cobrir toda a área */
     background-position: center;
     height: 100vh;
-    /* Faz o body ocupar toda a altura da janela */
 }
 
-/* {
-    outline: 1px solid rgba(255, 0, 0, 0.3) !important; /* Debug para delimitar elementos 
-} */
+/* 
+
+******Debug******
+
+* {
+    outline: 1px solid rgba(255, 0, 0, 0.3) !important;
+} 
+
+*/
+
+/* ******Main content****** */
 
 .content {
     flex: 1;
-    /* Faz o conteúdo principal ocupar o espaço entre o topo e a navegação */
 }
+
+/* ******Configurações da barra superior****** */
 
 .top-bar {
     position: relative;
@@ -39,8 +47,9 @@ body {
     align-items: center;
     z-index: 1000;
     transition: top 0.3s ease-in-out;
-    /* Transição suave ao esconder/exibir */
 }
+
+/* ******Configurações do menu da barra superior****** */
 
 #navbarNav {
     position: relative;
@@ -70,82 +79,7 @@ body {
     background-color: rgba(5, 172, 255, 0.9);
 }
 
-.main-title {
-    position: relative;
-    width: 100%;
-}
-
-.title {
-    font-family: 'Roboto Slab';
-    font-size: 3rem;
-    text-align: center;
-    margin: 2rem;
-    color: white;
-
-}
-
-.title-bar {
-    background-color: rgba(49, 113, 145, 0.9);
-    width: 100%;
-    height: auto;
-}
-
-.cards {
-    display: flex;
-    position: relative;
-    gap: 150px;
-    margin-top: 100px;
-    margin-bottom: 100px;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.card-edit {
-    position: relative;
-    text-align: center;
-    border-radius: 10%;
-    transition: transform 0.3s;
-    background: linear-gradient(135deg, #1e1e3f, #2a2a5a);
-    border-radius: 15px;
-    overflow: hidden;
-    transition: transform 0.3s, box-shadow 0.3s;
-    border: none;
-}
-
-.card-edit:hover {
-    transform: translateY(-10px);
-    /* Animação simples ao passar o mouse */
-
-}
-
-.modal-about {
-    position: absolute;
-}
-
-.modal-header {
-    background: linear-gradient(135deg, #1e1e3f, #2a2a5a);
-    color: white;
-}
-
-.modal-footer {
-    background: linear-gradient(135deg, #1e1e3f, #2a2a5a);
-    color: white;
-}
-
-.card-body {
-    position: relative;
-    top: 20px;
-    color: white;
-}
-
-.card-text {
-    position: relative;
-    margin: 20px;
-}
-
-.modal-contact-Us {
-    position: absolute;
-}
+/* ******Configurações da barra inferior****** */
 
 .bottom-bar {
     position: relative;
@@ -165,6 +99,8 @@ body {
     align-items: center;
     margin-top: 20px;
 }
+
+/* ******Configurações do menu da barra inferior****** */
 
 .left-content {
     justify-content: space-between;
@@ -297,9 +233,7 @@ body {
     transform: scale(1.02);
 }
 
-
-
-/*----------------------------------- MIDDLE CONTENT-------------------------------------*/
+/* ******Configurações da tabela principal****** */
 
 .container-table {
     height: 80vh;
@@ -394,68 +328,61 @@ body {
 .input-group {
     display: flex;
     align-items: stretch;
-  }
-  
-  .input-group input {
+}
+
+.input-group input {
     flex-grow: 1;
-  }
-  
-  .input-group button {
+}
+
+.input-group button {
     flex-shrink: 0;
     height: 45px;
-  }
+}
 
-
-
-
-
-
-
-/* Estilização da seção de Consultas Agendadas */
 #content-area h2 {
     font-weight: 600;
     color: #1f487e;
-  }
-  
-  .table-responsive {
+}
+
+.table-responsive {
     border-radius: 12px;
     overflow: hidden;
-  }
-  
-  .table {
+}
+
+.table {
     margin-top: 20px;
     background-color: #fff;
-  }
-  
-  .table thead {
+}
+
+.table thead {
     background-color: #007bff;
     color: white;
-  }
-  
-  .table th, .table td {
+}
+
+.table th,
+.table td {
     text-align: center;
     vertical-align: middle;
     padding: 12px;
     font-size: 15px;
-  }
-  
-  .table-hover tbody tr:hover {
+}
+
+.table-hover tbody tr:hover {
     background-color: #f0f8ff;
     transition: background-color 0.3s ease;
-  }
-  
-  .table-bordered th,
-  .table-bordered td {
+}
+
+.table-bordered th,
+.table-bordered td {
     border-color: #dee2e6;
-  }
-  
-  .shadow-sm {
+}
+
+.shadow-sm {
     box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.05);
-  }
-  
-  /* Se tiver botão futuramente para cancelar consulta ou algo assim */
-  .btn-consulta {
+}
+
+.btn-consulta {
     padding: 5px 12px;
     font-size: 14px;
     border-radius: 8px;
-  }
+}

@@ -10,6 +10,7 @@ window.addEventListener('scroll', function () {
     }
 });
 
+/* ******Formatar Telefone****** */
 document.getElementById('Telefone').addEventListener('input', function (e) {
     let value = e.target.value.replace(/\D/g, ''); 
     let formattedValue = '';
@@ -27,6 +28,7 @@ document.getElementById('Telefone').addEventListener('input', function (e) {
     e.target.value = formattedValue;
 });
 
+/* ******Formatar CPF****** */
 document.getElementById('CPF').addEventListener('input', function (e) {
     let value = e.target.value.replace(/\D/g, ''); 
     let formattedValue = '';
@@ -47,6 +49,7 @@ document.getElementById('CPF').addEventListener('input', function (e) {
     e.target.value = formattedValue;
 });
 
+/* ******Mostrar/Ocultar senha****** */
 document.getElementById('showPasswordCheck').addEventListener('change', function () {
     const passwordInput = document.getElementById('Senha');
     const confirmPasswordInput = document.getElementById('ConfirmarSenha');

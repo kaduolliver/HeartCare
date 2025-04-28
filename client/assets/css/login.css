@@ -1,3 +1,5 @@
+/* ******Configurações da página****** */
+
 body {
     flex-direction: column;
     position: relative;
@@ -5,20 +7,30 @@ body {
     padding-bottom: 150px;
     margin: 0;
     background-image: url(../images/img/doctors-background-login.png);
-    background-attachment: fixed;/* Deixa a imagem fixa durante a rolagem */
-    background-size: cover;/* Faz a imagem cobrir toda a área */
+    background-attachment: fixed;
+    background-size: cover;
     background-position: center;
     height: 100vh;
 }
 
-/* * {
+/* 
+
+******Debug******
+
+* {
     outline: 1px solid rgba(255, 0, 0, 0.3) !important;
-} */
+} 
+
+*/
+
+/* ******Main content****** */
 
 .content {
-    flex: 1;/* Faz o conteúdo principal ocupar o espaço entre o topo e a navegação */
-    position: relative; /* Permite posicionamento absoluto dentro desta div */
+    flex: 1;
+    position: relative;
 }
+
+/* ******Configurações da barra superior****** */
 
 .top-bar {
     position: relative;
@@ -34,8 +46,10 @@ body {
     justify-content: space-between;
     align-items: center;
     z-index: 1000;
-    transition: top 0.3s ease-in-out;/* Transição suave ao esconder/exibir */
+    transition: top 0.3s ease-in-out;
 }
+
+/* ******Configurações do menu da barra superior****** */
 
 #navbarNav {
     position: relative;
@@ -83,6 +97,8 @@ body {
     transform: scale(1.02);
 }
 
+/* ******Configurações do formulário principal****** */
+
 .form-container {
     border-radius: 15px;
     padding: 40px;
@@ -109,7 +125,9 @@ body {
     outline: none;
     border-color: #1e1e3f;
     box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.25);
-  }
+}
+
+/* ******Configurações da barra inferior****** */
 
 .bottom-bar {
     width: 100%;
@@ -127,6 +145,8 @@ body {
     align-items: center;
     margin-top: 20px;
 }
+
+/* ******Configurações dos itens/menu da barra inferior****** */
 
 .left-content {
     justify-content: space-between;

@@ -1,3 +1,5 @@
+/* ******Configurações da página****** */
+
 body {
     display: flex;
     flex-direction: column;
@@ -13,18 +15,25 @@ body {
     background-position: center;
 }
 
-/* * {
+/* 
+
+******Debug******
+
+* {
     outline: 1px solid rgba(255, 0, 0, 0.3) !important;
-} */
+} 
+
+*/
+
+/* ******Main content****** */
 
 .content {
     flex: 1;
-    /* Faz o conteúdo principal ocupar o espaço entre o topo e a navegação */
     position: relative;
-    /* Permite posicionamento absoluto dentro desta div */
     padding-bottom: 150px;
-    /* Espaço para a bottom-bar */
 }
+
+/* ******Configurações da barra superior****** */
 
 .top-bar {
     position: relative;
@@ -41,8 +50,9 @@ body {
     align-items: center;
     z-index: 1000;
     transition: top 0.3s ease-in-out;
-    /* Transição suave ao esconder/exibir */
 }
+
+/* ******Configurações do menu da barra superior****** */
 
 #navbarNav {
     position: relative;
@@ -97,6 +107,8 @@ body {
     position: relative;
 }
 
+/* ******Configurações do formulário de registro****** */
+
 .form-container {
     position: relative;
     background: linear-gradient(135deg, #1e1e3f, #277375);
@@ -143,6 +155,8 @@ body {
     transform: scale(1.02);
 }
 
+/* ******Configurações da barra inferior****** */
+
 .bottom-bar {
     width: 100%;
     height: 150px;
@@ -160,6 +174,8 @@ body {
     align-items: center;
     margin-top: 20px;
 }
+
+/* ******Configurações dos itens/menu da barra inferior****** */
 
 .left-content {
     justify-content: space-between;
