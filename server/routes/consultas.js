@@ -2,13 +2,13 @@ const express = require('express');
 const router = express.Router();
 const consultasController = require('../controllers/consultasController');
 
-// Agendar consulta
+// Rota para agendar consulta
 router.post('/agendar', consultasController.agendarConsulta);
 
-// Consultas do usu·rio
+// Rota para consultas do usu√°rio
 router.get('/', consultasController.getConsultas);
 
-// Cancelar consulta
+// Rotas para cancelar consulta
 router.delete('/:id', consultasController.cancelarConsulta);
 
 module.exports = router;
