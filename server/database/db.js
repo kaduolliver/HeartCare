@@ -1,3 +1,4 @@
+//Conexão com o banco de dados PostgreSQL
 const { Pool } = require('pg');
 
 const pool = new Pool({

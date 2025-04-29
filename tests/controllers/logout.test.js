@@ -13,7 +13,7 @@ describe('authController - logout', () => {
     send: jest.fn()
   };
 
-  it('deve destruir a sessão e fazer logout', () => {
+  it('tem que destruir a sessao e fazer logout', () => {
     authController.logout(mockReq, mockRes);
 
     expect(mockReq.session.destroy).toHaveBeenCalled();
@@ -21,8 +21,8 @@ describe('authController - logout', () => {
     expect(mockRes.send).toHaveBeenCalledWith('Logout realizado');
   });
 
-  it('deve retornar erro se não conseguir destruir a sessão', () => {
-    mockReq.session.destroy.mockImplementationOnce((callback) => callback(new Error('Erro ao destruir sessão')));
+  it('Retorna erro se nao conseguir destruir a sessao', () => {
+    mockReq.session.destroy.mockImplementationOnce((callback) => callback(new Error('Erro ao destruir sessao')));
 
     authController.logout(mockReq, mockRes);
 

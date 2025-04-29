@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const isLoggedIn = !!data.nome;
 
-    /* ******Rediresionamentos****** */
+    /* ******Redirecionamentos****** */
     if (agendarConsultaBtn) agendarConsultaBtn.href = isLoggedIn ? userPage : loginPage;
     if (exameBtn) exameBtn.href = isLoggedIn ? userPage : loginPage;
     if (exameBtn2) exameBtn2.href = isLoggedIn ? userPage : loginPage;

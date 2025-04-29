@@ -1,15 +1,15 @@
 import { formatarCPF, formatarTelefone } from '../../client/assets/js/utils/formatadores';
 
-describe('Funcoes de formatacao', () => {
+describe('Funcoes de formatacao para CPF e Telefone', () => {
   
   describe('formatarCPF', () => {
-    it('deve formatar corretamente um CPF apenas com numeros', () => {
+    it('tem que formatar corretamente um CPF apenas com numeros', () => {
       const cpf = '12345678900';
       const resultado = formatarCPF(cpf);
       expect(resultado).toBe('123.456.789-00');
     });
 
-    it('deve remover caracteres nao numericos antes de formatar', () => {
+    it('tem que remover caracteres nao numericos antes de formatar', () => {
       const cpf = '123.456-789/00';
       const resultado = formatarCPF(cpf);
       expect(resultado).toBe('123.456.789-00');
@@ -29,13 +29,13 @@ describe('Funcoes de formatacao', () => {
       expect(resultado).toBe('(11) 98765-4321');
     });
 
-    it('deve cortar numeros excedentes apos 11 digitos', () => {
+    it('precisa cortar numeros excedentes apos 11 digitos', () => {
       const telefone = '11987654321000';
       const resultado = formatarTelefone(telefone);
       expect(resultado).toBe('(11) 98765-4321');
     });
 
-    it('deve lidar com caracteres nao numericos misturados', () => {
+    it('tem que lidar com caracteres nao numericos misturados', () => {
       const telefone = '(11)98765-4321';
       const resultado = formatarTelefone(telefone);
       expect(resultado).toBe('(11) 98765-4321');

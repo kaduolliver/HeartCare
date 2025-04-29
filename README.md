@@ -270,3 +270,11 @@ Abra seu navegador e acesse:
 ### 8. Parar o servidor
 
 Pressione `Ctrl + C` no terminal.
+
+## PARA RODAR OS TESTES ##
+
+Agora que todas as dependências estão instaladas e o ambiente está configurado, pode rodar os testes.
+
+Execute no terminal:
+<pre>npm run test</pre>
+

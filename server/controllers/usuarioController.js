@@ -3,6 +3,9 @@ const pool = require('../database/db');
 // Importa o bcrypt para fazer hash de senhas
 const bcrypt = require('bcrypt');
 
+const { gerarHashSenha } = require('../utils/usuarioUtils')
+const { validarEmail } = require('../utils/validacoesUsuario')
+
 // Função para buscar os dados do usuário logado
 exports.getUsuario = async (req, res) => {
     // Verifica se o usuário está autenticado pela sessão
@@ -30,6 +33,12 @@ exports.atualizarEmail = async (req, res) => {
     if (!req.session.usuario) return res.status(401).json({ erro: 'Não autenticado' });
 
     const { email } = req.body; // Extrai o novo e-mail do corpo da requisição
+
+    //Valida se o email está de acordo ou não
+    if (!validarEmail(email)) {
+        return res.status(400).json({ erro: 'E-mail inválido' });
+    }
+
     try {
         // Atualiza o e-mail do usuário no banco de dados
         await pool.query('UPDATE usuarios SET email = $1 WHERE cpf = $2', [email, req.session.usuario.cpf]);
@@ -53,7 +62,7 @@ exports.atualizarSenha = async (req, res) => {
     const { senha } = req.body; // Extrai a nova senha do corpo da requisição
     try {
         // Gera o hash da nova senha
-        const hash = await bcrypt.hash(senha, 10);
+        const hash = await gerarHashSenha(senha);
 
         // Atualiza a senha no banco de dados
         await pool.query('UPDATE usuarios SET senha = $1 WHERE cpf = $2', [hash, req.session.usuario.cpf]);

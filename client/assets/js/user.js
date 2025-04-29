@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
 /* import da função "showContent" que mostra a tabela principal */
 import { showContent } from '../js/utils/showContent.js';
 
+//Evento para cancelar a consulta
 document.addEventListener('click', async function (e) {
   if (e.target.classList.contains('cancelar-btn')) {
     const idConsulta = e.target.getAttribute('data-id');

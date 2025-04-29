@@ -21,7 +21,7 @@ export function carregarConsultasAgendadas(contentArea) {
         .then(res => res.json())
         .then(data => {
             const tabelaConsultas = document.getElementById('tabelaConsultas');
-            tabelaConsultas.innerHTML = ''; // Limpa antes de preencher
+            tabelaConsultas.innerHTML = ''; 
 
             if (data.consultas && data.consultas.length > 0) {
                 data.consultas.forEach(consulta => {

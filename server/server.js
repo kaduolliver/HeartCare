@@ -43,18 +43,16 @@ const consultasRoutes = require('./routes/consultas');
 // Importa as rotas de p�ginas (index, about, contact, etc.)
 const pageRoutes = require('./routes/pages');
 
-<<<<<<< HEAD
 // Usa as rotas importadas, prefixando seus caminhos
 app.use('/api/auth', authRoutes);        // Ex: POST /api/auth/login
 app.use('/api/usuario', usuarioRoutes);  // Ex: GET /api/usuario
 app.use('/api/consultas', consultasRoutes); // Ex: GET /api/consultas
 app.use('/', pageRoutes);                // Ex: GET / (index.html), /about.html, etc.
-=======
+
 // API de autenticação
 app.use('/api/auth', authRoutes);
 app.use('/api/usuario', usuarioRoutes);
 app.use('/api/consultas', consultasRoutes);
 app.use('/', pageRoutes);
->>>>>>> 6d1df4c62985457c45fd0a70b98f6b40aa313553
 
 app.listen(PORT, () => console.log(`Servidor rodando em http://localhost:${PORT}`));
