@@ -1,7 +1,7 @@
-// Carrega vari·veis de ambiente do arquivo .env
+// Carrega vari√°veis de ambiente do arquivo .env
 require('dotenv').config();
 
-// Importa os mÛdulos necess·rios
+// Importa os m√≥dulos necess√°rios
 const express = require('express');
 const session = require('express-session');
 const bodyParser = require('body-parser');
@@ -11,36 +11,36 @@ const path = require('path');
 const app = express();
 const PORT = 3000; 
 
-// ===== Middlewares =====
+// ==== Middlewares ====
 
-// Middleware para interpretar dados enviados via formul·rios (x-www-form-urlencoded)
+// Middleware para interpretar dados enviados via formul√°rios (x-www-form-urlencoded)
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // Middleware para interpretar dados enviados em JSON
 app.use(bodyParser.json());
 
-// Middleware para gerenciar sessıes de usu·rio
+// Middleware para gerenciar sess√µes de usu√°rio
 app.use(session({
     secret: 'heartcare_secret', 
     resave: false,              
     saveUninitialized: false   
 }));
 
-// Middleware para servir arquivos est·ticos (HTML, CSS, JS, imagens) da pasta 'client'
+// Middleware para servir arquivos est√°ticos (HTML, CSS, JS, imagens) da pasta 'client'
 app.use(express.static(path.join(__dirname, '../client')));
 
-// ===== Rotas =====
+// ==== Rotas ====
 
-// Importa as rotas de autenticaÁ„o (registro, login, logout)
+// Importa as rotas de autentica√ß√£o (registro, login, logout)
 const authRoutes = require('./routes/auth');
 
-// Importa as rotas relacionadas ao usu·rio (dados pessoais, etc)
+// Importa as rotas relacionadas ao usu√°rio (dados pessoais, etc)
 const usuarioRoutes = require('./routes/usuario');
 
-// Importa as rotas relacionadas a consultas mÈdicas
+// Importa as rotas relacionadas a consultas m√©dicas
 const consultasRoutes = require('./routes/consultas');
 
-// Importa as rotas de p·ginas (index, about, contact, etc.)
+// Importa as rotas de p√°ginas (index, about, contact, etc.)
 const pageRoutes = require('./routes/pages');
 
 <<<<<<< HEAD
@@ -50,7 +50,7 @@ app.use('/api/usuario', usuarioRoutes);  // Ex: GET /api/usuario
 app.use('/api/consultas', consultasRoutes); // Ex: GET /api/consultas
 app.use('/', pageRoutes);                // Ex: GET / (index.html), /about.html, etc.
 =======
-// API de autentica√ß√£o
+// API de autentica√É¬ß√É¬£o
 app.use('/api/auth', authRoutes);
 app.use('/api/usuario', usuarioRoutes);
 app.use('/api/consultas', consultasRoutes);
