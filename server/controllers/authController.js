@@ -41,13 +41,17 @@ exports.registrar = async (req, res) => {
 // Função para fazer login do usuário
 exports.login = async (req, res) => {
     // Recebe e limpa o CPF (remove qualquer caractere que não seja número)
-    const cpfInput = req.body.cpfInput.replace(/\D/g, '');
-    const passwordInput = req.body.passwordInput;
+    const cpfInput = (req.body.cpfInput || '').replace(/\D/g, '');
+    const passwordInput = req.body.passwordInput || '';
 
     try {
         // Busca o usuário no banco pelo CPF
         const resultado = await pool.query('SELECT * FROM usuarios WHERE cpf = $1', [cpfInput]);
         const usuario = resultado.rows[0];
+
+        if (resultado.rows.length === 0) {
+            return res.send('CPF ou senha invalidos');
+        }
 
         // Se o usuário existe e a senha bate com a senha armazenada
         if (usuario && await bcrypt.compare(passwordInput, usuario.senha)) {

@@ -4,7 +4,6 @@
   "description": "Este repositório contém um sistema de cadastro e login integrado com o Firebase Firestore Database.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "test": "jest"
   },
   "keywords": [],
@@ -20,10 +19,8 @@
     "pg": "^8.14.1"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.26.9",
+    "babel-jest": "^29.7.0",
     "jest": "^29.7.0"
-  },
-  "jest": {
-  "testEnvironment": "node"
-}
-
+  }
 }

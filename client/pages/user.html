@@ -19,7 +19,8 @@
 
             <nav class="navbar navbar-expand-lg top-bar">
                 <a class="navbar-brand" href="../index.html">
-                    <img src="../assets/images/icons/heart-logo-topbar-icon.png" width="100" height="80" alt="Logo da Clinica">
+                    <img src="../assets/images/icons/heart-logo-topbar-icon.png" width="100" height="80"
+                        alt="Logo da Clinica">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Alterna navegaÃ§Ã£o">
@@ -49,26 +50,26 @@
 
             <div class="middle-content">
                 <div class="full-screen-container">
-                  <div class="row shadow-lg bg-white rounded w-75 table-container">
-            
-                    <!-- Menu lateral -->
-                    <div class="col-md-4 menutable">
-                      <div class="d-grid gap-2">
-                        <button class="btn menu-button active" onclick="showContent('perfil', this)">Perfil</button>
-                        <button class="btn menu-button" onclick="showContent('dados', this)">Dados Pessoais</button>
-                        <button class="btn menu-button" onclick="showContent('marcar', this)">Marcar Consulta</button>
-                        <button class="btn menu-button" onclick="showContent('agendadas', this)">Consultas Agendadas</button>
-                        <button class="btn menu-button" onclick="showContent('exames', this)">Resultado de Exames</button>
-                      </div>
+                    <div class="row shadow-lg bg-white rounded w-75 table-container">
+
+                        <!-- Menu lateral -->
+                        <div class="col-md-4 menutable">
+                            <div class="d-grid gap-2">
+                                <button class="btn menu-button active" id="perfilBtn">Perfil</button>
+                                <button class="btn menu-button" id="dadosBtn">Dados Pessoais</button>
+                                <button class="btn menu-button" id="marcarBtn">Marcar Consulta</button>
+                                <button class="btn menu-button" id="agendadasBtn">Consultas Agendadas</button>
+                                <button class="btn menu-button" id="examesBtn">Resultado de Exames</button>
+                            </div>
+                        </div>
+
+                        <!-- Conteúdo dinâmico -->
+                        <div class="col-md-8 content-area" id="content-area">
+                        </div>
+
                     </div>
-            
-                    <!-- Conteúdo dinâmico -->
-                    <div class="col-md-8 content-area" id="content-area">
-                    </div>
-            
-                  </div>
                 </div>
-              </div>
+            </div>
 
         </div> <!-- termino da div do middle-content -->
 
@@ -80,7 +81,7 @@
                 </div>
                 <p class="title-of-rights">Â© 2025. Todos os direitos reservados.</p>
             </div>
-            <div class="center-content">    
+            <div class="center-content">
 
                 <nav class="menu">
                     <h6 class="menu-title">Menu</h6>
@@ -234,10 +235,8 @@
 
     </div> <!-- termino da div do content -->
 
+    <script type="module" src="../assets/js/user.js"></script>
 
-
-
-    <script src="../assets/js/user.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
