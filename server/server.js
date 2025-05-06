@@ -49,10 +49,4 @@ app.use('/api/usuario', usuarioRoutes);  // Ex: GET /api/usuario
 app.use('/api/consultas', consultasRoutes); // Ex: GET /api/consultas
 app.use('/', pageRoutes);                // Ex: GET / (index.html), /about.html, etc.
 
-// API de autenticação
-app.use('/api/auth', authRoutes);
-app.use('/api/usuario', usuarioRoutes);
-app.use('/api/consultas', consultasRoutes);
-app.use('/', pageRoutes);
-
 app.listen(PORT, () => console.log(`Servidor rodando em http://localhost:${PORT}`));
